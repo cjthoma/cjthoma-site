@@ -1,0 +1,102 @@
+.About {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    transition: color 1s ease-in-out;
+    text-align: center;
+}
+
+.About h1 {
+    position: relative;
+    font-size: 80px;
+    text-align: left;
+    margin: 3px auto;
+    line-height: .8;
+    transition: -webkit-text-stroke 1s ease-in-out,
+                color 1s ease-in-out;
+}
+
+.About h1:nth-of-type(2) {
+    right: 35px;
+}
+
+.About p {
+    position: relative;
+    font-size: 14px;
+    font-weight: 300;
+    -webkit-text-stroke: 0px transparent;
+    text-align: left;
+    padding: 50px 0;
+    width: 450px;
+    left: 50%;
+    transition: color 1s ease-in-out;
+}
+
+.About div {
+    position: relative;
+    font-size: 20px;
+    font-weight: 300;
+    -webkit-text-stroke: 0px transparent;
+    transition: color 1s ease-in-out;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .About h1 {
+        position: relative;
+        font-size: 55px;
+    }
+
+    .About h1:nth-of-type(2) {
+        right: 25px;
+    }
+
+    .About p {
+        position: relative;
+        font-size: 12px;
+        font-weight: 300;
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .About h1 {
+        position: relative;
+        font-size: 50px;
+    }
+
+    .About p {
+        position: relative;
+        font-size: 10px;
+        font-weight: 300;
+        width: 250px;
+    }
+
+    .About div {
+        font-size: 12px;
+        padding: 0 0 50px 0;
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+
+    .About h1 {
+        position: relative;
+        font-size: 40px;
+    }
+
+    .About p {
+        position: relative;
+        font-size: 10px;
+        font-weight: 300;
+        width: 200px;
+        left: 35%;
+    }
+
+    .About div {
+        font-size: 12px;
+    }
+
+}

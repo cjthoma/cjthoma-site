@@ -1,0 +1,106 @@
+.Project {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    padding: 25px 0;
+    transition: color 1s ease-in-out;
+}
+
+.Project {
+    font-size: 40px;
+}
+
+.Project p {
+    position: relative;
+    text-align: left;
+    font-size: 16px;
+    width: 700px;
+    padding: 25px 0;
+    padding: 0px 0px 150px 0px;
+    z-index: 2;
+}
+
+.Project img {
+    margin: -5px;
+    width: 100%;
+    box-shadow: 5px 5px 3px 0px;
+    padding: 0;
+    margin: -20 0;
+    bottom: 100px;
+    top: 0px;
+    z-index: 1;
+}
+
+.imgContainer {
+    padding: 3%;
+    width: 70%;
+    transition: background-color 1s ease;
+}
+
+.imgContainer img {
+    pointer-events: none;
+}
+
+.Dash {
+    position: relative;
+    width: 97%;
+    height: 2px;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    background-color: #2B2D42;
+    opacity: 1;
+    margin: auto;
+    transition: background-color 1s ease,
+                opacity 1s ease;
+}
+
+.Index {
+    font-size: 14px;
+    position: relative;
+    display: inline;
+    top: 10px;
+    right: 51%;
+}
+
+@media only screen and (max-width: 950px) {
+    .Dash {
+        width: 85%;
+    }
+
+    .Index {
+        top: 10px;
+        right: 45%;
+    }
+
+    .Project {
+        font-size: 30px;
+    }
+
+    .Project p {
+        font-size: 12px;
+        width: 400px;
+        padding: 0px 0px 50px 0px;
+        z-index: 2;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .Project {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .Project {
+        font-size: 15px;
+    }
+
+    .Project p {
+        font-size: 12px;
+        width: 250px;
+    }
+}
+
+/** MOBILE **/

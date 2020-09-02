@@ -1,0 +1,69 @@
+.NavItem {
+    display: flex;
+    text-decoration: none;
+    padding: 0 50px;
+}
+
+.NavItem div {
+    height: inherit;
+    font-size: 12em;
+    font-weight: 600;
+    transition: color 1s ease, 
+                opacity 1s ease, 
+                letter-spacing 1s ease-in-out;
+    cursor: pointer;
+    align-items: center;
+        /** TEST **/
+        display: flex;
+        position: relative;
+        overflow: hidden;
+}
+
+.NavItem div p {
+    box-sizing: border-box;
+}
+
+.NavItem h6 {
+    position: relative;
+    font-size: 12px;
+    top: 30px;
+    left: 20px;
+    transition: color 1s ease, 
+                opacity 1s ease, 
+}
+
+@media only screen and (max-width: 900px) {
+    .NavItem div {
+        height: inherit;
+        font-size: 7em;
+    }
+
+    .NavItem {
+        height: 125px;
+        padding: 15px;
+    }
+
+    .NavItem h6 {
+        font-size: 10px;
+        top: -5px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .NavItem div {
+        font-size: 3em;
+        font-weight: 600;
+    }
+
+    .NavItem {
+        height: 65px;
+        padding: 10px;
+    }
+
+    .NavItem h6 {
+        position: relative;
+        font-size: 8px;
+        top: -5px;
+        left: 5px;
+    }
+}

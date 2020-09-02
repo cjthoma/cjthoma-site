@@ -1,0 +1,122 @@
+.Page {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    transition: background-color 2s ease-in-out;
+}
+
+.Page nav {
+    position: sticky;
+    width: 50px;
+    height: 100vh;
+    padding: 0 50px 0 25px;
+    top: 0;
+    margin: 0 50px 50px 0;
+    transition: background-color 1s ease;
+}
+
+.Page nav h1 {
+    position: relative;
+    white-space: nowrap;
+    transform: rotate(-90deg);
+    top: 40vh;
+    left: 10px;
+    transition: color 1s ease-in-out;
+}
+
+.Page nav p {
+    position: relative;
+    white-space: nowrap;
+    transform: rotate(-90deg);
+    top: 60vh;
+    left: 10px;
+    transition: color 1s ease-in-out;
+}
+
+.Content {
+    margin: 25px 50px;
+    width: 100%;
+}
+
+.imgFilter img {
+    filter: grayscale(100%);;
+}
+
+@media only screen and (max-width: 950px) {
+    .Page {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .Page nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        height: 100px;
+        padding: 20px 20px 25px 20px;
+        box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.3);
+        z-index: 100;
+    }
+
+    .Page nav h1 {
+        transform: rotate(0deg);
+        top: 0px;
+        left: 15%;
+        padding: 0 10%;
+    }
+    
+    .Page nav p {
+        transform: rotate(0deg);
+        font-size: 12px;
+        top: 0px;
+        left: 25%;
+    }
+
+    .Content {
+        margin: 0px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .Page nav {
+        height: 100px;
+        padding: 10px 10px 15px 10px;
+    }
+
+    .Page nav h1 {
+        font-size: 15px;
+        left: 20%;
+        padding: 0 10px;
+    }
+
+    .Page nav p {
+        font-size: 10px;
+        left: 45%;
+    }
+
+}
+
+/** MOBILE **/
+@media only screen and (max-width: 425px) {
+
+    .Page nav {
+        height: 70px;
+        padding: 10px 10px 15px 10px;
+    }
+
+    .Page nav h1 {
+        font-size: 12px;
+        top: 0px;
+        left: 17%;
+        padding: 0 10px;
+    }
+
+    .Page nav p {
+        font-size: 6px;
+        top: 0px;
+        left: 30%;
+    }
+
+}

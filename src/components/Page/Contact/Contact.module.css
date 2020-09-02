@@ -1,0 +1,110 @@
+.Contact {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    transition: color 1s ease-in-out;
+}
+
+.Contact h1 {
+    position: relative;
+    font-size: 80px;
+    text-align: left;
+    margin: 3px auto;
+    line-height: .8;
+    transition: -webkit-text-stroke 1s ease-in-out,
+                color 1s ease-in-out;
+}
+
+.Contact h1:nth-of-type(2) {
+    left: 55px;
+}
+
+.Contact h1:nth-of-type(3) {
+    right: 90px;
+}
+
+.Contact p {
+    position: relative;
+    font-size: 14px;
+    font-weight: 300;
+    -webkit-text-stroke: 0px transparent;
+    text-align: left;
+    margin: 100px auto;
+    width: 500px;
+    left: 25%;
+    transition: color 1s ease-in-out;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .Contact h1 {
+        font-size: 55px;
+    }
+
+    .Contact h1:nth-of-type(2) {
+        left: 35px;
+    }
+    
+    .Contact h1:nth-of-type(3) {
+        right: 65px;
+    }
+
+    .About p {
+        position: relative;
+        font-size: 14px;
+        font-weight: 300;
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .Contact h1 {
+        position: relative;
+        font-size: 50px;
+    }
+
+    .Contact h1:nth-of-type(2) {
+        left: 30px;
+    }
+    
+    .Contact h1:nth-of-type(3) {
+        right: 60px;
+    }
+
+    .Contact p {
+        position: relative;
+        font-size: 10px;
+        font-weight: 300;
+        width: 250px;
+        left: 20%;
+    }
+
+    .Contact div {
+        font-size: 12px;
+        padding: 0 0 50px 0;
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+
+    .About h1 {
+        position: relative;
+        font-size: 30px;
+    }
+
+    .About p {
+        position: relative;
+        font-size: 10px;
+        font-weight: 300;
+        width: 200px;
+        left: 35%;
+    }
+
+    .About div {
+        font-size: 12px;
+    }
+
+}

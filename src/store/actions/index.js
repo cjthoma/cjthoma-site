@@ -1,0 +1,1 @@
+export { fetchInitState, setInitState } from './state';

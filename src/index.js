@@ -1,12 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as serviceWorker from './serviceWorker';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Login from './containers/Login/Login';
+import reducer from './store/reducer';
+
+
+const store = createStore(reducer, applyMiddleware(thunk));
+
+
+const app = (
+  <Provider store={store}>
+    <BrowserRouter>
+        <Route path={'/admin-login'} component={ Login }/>
+        <Route path={'/'} component={ App }/>
+    </BrowserRouter>
+  </Provider>
+)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    { app }
   </React.StrictMode>,
   document.getElementById('root')
 );

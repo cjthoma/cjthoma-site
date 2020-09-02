@@ -1,0 +1,9 @@
+.Work {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,137 @@
+.StackItem {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 100px 0;
+    font-size: 14px;
+    margin: 0;
+}
+
+.StackItemContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    width: 400px;
+}
+
+.StackItem div h6 {
+    position: relative;
+    text-align: left;
+    padding: 5px 0;
+    left: 8px;
+}
+
+.StackItem div div p {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 75px;
+    height: 25px;
+    margin: 5px 5px;
+    padding: 5px;
+    transition: background-color 1s ease-in-out,
+                color 1s ease-in-out,
+                transform 1s ease,
+                opacity 1.5s ease,
+                letter-spacing 1s ease-in-out;
+}
+
+
+.DateItemContainer {
+    position: relative;
+}
+
+.DateItemContainer h6 {
+    padding: 15px 0px;
+}
+
+.DateItemContainer h1 {
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 300;
+    right: 35px;
+    transition: background-color 1s ease-in-out,
+                color 1s ease-in-out;
+}
+
+
+@media only screen and (max-width: 950px) {
+
+    .StackItem {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0 50px 0;
+        font-size: 12px;
+        margin: 0;
+    }
+
+    .StackItemContainer {
+        width: 300px;
+    }
+
+
+    .DateItemContainer {
+        position: relative;
+        padding: 5px 0;
+        bottom: 50px;
+        height: 70px;
+    }
+    
+
+    .DateItemContainer h6 {
+        left: 0;
+        width: 0;
+    }
+    
+
+
+    .DateItemContainer h1 {
+        text-align: center;
+        top: -20px;
+        right: 20px;
+    }
+}
+
+/** MOBILE **/
+@media only screen and (max-width: 425px) {
+
+    .StackItem {
+        font-size: 12px;
+        padding: 50px 0;;
+    }
+
+    .StackItem div h6 {
+        padding: 10px 0;
+        left: 30px;
+    }
+
+    .StackItemContainer {
+        width: 300px;
+        left: 10px;
+        padding: 5px 0;
+    }
+
+
+    .DateItemContainer {
+        position: relative;
+        padding: 10px 0px 0px 0px;
+        height: 70px;
+    }
+
+    .DateItemContainer h6 {
+        left: 0;
+    }
+
+
+    .DateItemContainer p {
+        text-align: center;
+        width: 100px;
+        left: 12px;
+        top: -20px;
+    }
+}
