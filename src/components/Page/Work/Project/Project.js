@@ -8,6 +8,9 @@ import style from './Project.module.css';
 import * as actionTypes from '../../../../store/actions/actionTypes';
 
 class Project extends Component {
+    componentDidMount() {
+        
+    }
 
     render () {
         let stackArr = this.props.stack;
@@ -31,6 +34,7 @@ class Project extends Component {
                 <img key={this.props.imgs[i]} src={this.props.imgs[i]} alt='img' />
             );
         }
+
         return (
             <div style={projectStyle} className={style.Project}>
                     <Fade bottom cascade>

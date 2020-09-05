@@ -10,6 +10,7 @@ const initialState = {
     buttonClick: false,
     scrollPos: 0,
     maskSize: '30px',
+    projects: [],
     colors: 
     {
         // primary: '#fbc4ab', // text peach
@@ -19,9 +20,12 @@ const initialState = {
         // textColor: '#714674',
         // textHighlight: '#714674',
         // textDefocus: '#faae7b',
+
+        //alt Colors
+        //secondary: '#47e7e5' //bright turquise
     },
     defaultColors: null,
-    atlColors: null,
+    altColors: null,
     mask: 
     {
         WebkitClipPath: 'ellipse(0px 0px at center)',
@@ -38,7 +42,6 @@ const reducer = (state = initialState, action) => {
                 colors: { ...state.colors }, 
                 mask: { ...state.mask }
             }
-            console.log(action.colors.default)
             updatedState = { 
                 ...state, 
                 mask: { ...state.mask },
@@ -46,9 +49,49 @@ const reducer = (state = initialState, action) => {
                 colors: { ...action.colors.default }, 
                 // color scheme setup
                 defaultColors: { ...action.colors.default }, 
-                atlColors: { ...action.colors.alt }
+                altColors: { ...action.colors.alt }
             }
             return updatedState
+        }
+
+        case actionTypes.SET_HOVER: {
+            
+            let updatedState = { 
+                ...state, 
+                colors: { ...state.colors }, 
+                defaultColors: { ...state.defaultColors },
+                altColors: { ...state.altColors },
+                mask: { ...state.mask }
+            }
+
+            updatedState = { 
+                ...state, 
+                colors: { ...state.colors }, 
+                defaultColors: { ...state.defaultColors },
+                altColors: { ...state.altColors },
+                mask: { ...state.mask },
+                hover: action.hover
+            }
+            
+            return updatedState
+        }
+
+        case actionTypes.FETCH_PROJECTS: {
+            let updatedState = { 
+                ...state, 
+                colors: { ...state.colors }, 
+                mask: { ...state.mask }
+            }
+
+            let arr = action.projects;
+
+            updatedState = { 
+                ...state, 
+                colors: { ...state.colors }, 
+                mask: { ...state.mask },
+                projects: arr,
+            }
+            return updatedState;
         }
 
         case actionTypes.NAV_CLICK_HANDLER: {
@@ -61,7 +104,7 @@ const reducer = (state = initialState, action) => {
                 
                 updatedState = { 
                     ...updatedState,
-                    colors: { ...state.atlColors },
+                    colors: { ...state.altColors },
                     mask: { ...state.mask },
                     hover: null, 
                     maskSize: '30px', 
@@ -72,7 +115,7 @@ const reducer = (state = initialState, action) => {
                     updatedState = {
                         ...updatedState,
                         mask: { ...state.mask },
-                        colors: { ...state.atlColors }
+                        colors: { ...state.altColors }
                     }
                 }
                 return updatedState;
@@ -82,6 +125,7 @@ const reducer = (state = initialState, action) => {
 
 
         case actionTypes.NAV_MOUSEOVER_HANDLER: {
+            console.log('test')
             let updatedState = { 
                 ...state, colors: { ...state.colors }, mask: { ...state.mask }
             }
@@ -92,7 +136,7 @@ const reducer = (state = initialState, action) => {
                 updatedState = { 
                     ...updatedState,
                     mask: { ...state.mask },
-                    colors: { ...state.atlColors },
+                    colors: { ...state.altColors },
                     hover: action.payload.event.textContent,
                     buttonHover: true, 
                     maskSize: action.payload.maskSize, 
@@ -101,7 +145,7 @@ const reducer = (state = initialState, action) => {
                 updatedState = { 
                     ...updatedState,
                     mask: { ...state.mask },
-                    colors: { ...state.atlColors },
+                    colors: { ...state.altColors },
                     hover: action.payload.event.textContent, 
                     buttonHover: false, 
                     maskSize: action.payload.maskSize, 
@@ -153,7 +197,7 @@ const reducer = (state = initialState, action) => {
 
             // default firefox
             let y = 100;
-            let x = 5;
+            let x = 0;
 
             // chrome
             if(isChrome) {

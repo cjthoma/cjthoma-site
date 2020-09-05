@@ -1,0 +1,71 @@
+.NewProject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+    background-color: #121212;
+    color: white;
+}
+
+.NewProject div {
+    background-color: #1a1a1b;
+    border: 1px solid #474748;
+    border-radius: 5px;
+    padding: 15px 20px;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 80%;
+}
+
+.Title {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    color: red;
+    height: 90px;
+    margin: 20px 0;
+}
+
+.Title div {
+    width: 100%;
+    padding: 0;
+}
+
+.Title input {
+    position: relative;
+    width: 80%;
+    padding: 0;
+    bottom: 15px;
+}
+
+.Description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.Description input {
+    position: relative;
+    width: 80%;
+}
+
+.AddImages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.AddImages input {
+    position: relative;
+    width: 80%;
+}

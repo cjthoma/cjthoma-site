@@ -30,6 +30,19 @@ class NavItem extends Component {
             delay: (el, i) => 50 * i,
             easing: 'easeOutExpo'
         });
+
+        setTimeout(() => {
+
+        if(this.props.hover === this.props.title) {
+            console.log('fire')
+            console.log(navItem)
+            //add a button to do this
+            this.props.navMouseOver(navItem, '0px');
+        }
+        
+
+        }, 3000)
+
     }
 
     render () {
@@ -55,7 +68,7 @@ class NavItem extends Component {
             color: 'rgba(250, 174, 123, 0.2)', 
         }
 
-    if(this.props.hover === this.props.title && this.props.hover){ // If this.props.hover current nav item is hovered, hover style applied
+    if(this.props.hover === this.props.title){ // If this.props.hover current nav item is hovered, hover style applied
         item = (
                 <div ref={this.navItemRef} className={style.NavItem} style={{color: this.props.secondary}}>
                     <div

@@ -11,6 +11,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.fetchInitState();
+    this.props.fetchProjects();
   }
 
   render() {
@@ -60,7 +61,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
       mouseMove: (event) => dispatch({type: actionTypes.MOUSE_MOVE, payload: event}),
       onPageScroll: (event) => dispatch({type: actionTypes.ON_SCROLL_HANDLER, payload: event}),
-      fetchInitState: () => dispatch(actions.fetchInitState())
+      fetchInitState: () => dispatch(actions.fetchInitState()),
+      fetchProjects: () => dispatch(actions.fetchProjects())
   }
 }
 

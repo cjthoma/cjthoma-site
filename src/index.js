@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 import Login from './containers/Login/Login';
+import Config from './containers/Config/Config';
 import reducer from './store/reducer';
 
 
@@ -20,7 +21,8 @@ const app = (
   <Provider store={store}>
     <BrowserRouter>
         <Route path={'/admin-login'} component={ Login }/>
-        <Route path={'/'} component={ App }/>
+        <Route path={'/config-page'} component={ Config }/>
+        <Route path={'/'} exact component={ App }/>
     </BrowserRouter>
   </Provider>
 )

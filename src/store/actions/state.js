@@ -4,8 +4,6 @@ import * as corsModule from 'cors';
 
 const cors = corsModule({origin: true})
 
-
-
 export const fetchInitState = () => {
     return dispatch => {
         axios.get('https://cjthoma-aedf4.firebaseio.com/colors.json')
