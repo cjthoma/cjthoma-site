@@ -42,6 +42,19 @@ class Config extends Component {
     render () {
         return (
             <div className={style.NewProject}>
+            <div className={style.ColorSelector}>
+                <div className={style.BoxHighlight} style={boxHighlightStyleList}></div>
+                <div className={style.InputContainer}>
+                { colorSelectorTitle }
+                    <input onChange={(event) => this.inputOnChangeHandler(event)} defaultValue={this.props.colorType} type={'text'} style={{backgroundColor: this.props.colorType}}></input>
+                </div>
+    
+                <button className={style.Button} style={buttonStyleList}>Send</button>
+            </div>
+
+
+
+
             <div className={style.Container}>
                 <h1>ADD NEW PROJECT TO WORK PAGE</h1>
                 <div className={style.Title}>

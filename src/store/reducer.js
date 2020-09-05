@@ -23,6 +23,7 @@ const initialState = {
 
         //alt Colors
         //secondary: '#47e7e5' //bright turquise
+        //altColor: '#0d1429' // dark -v of default altColor 
     },
     defaultColors: null,
     altColors: null,
@@ -61,16 +62,10 @@ const reducer = (state = initialState, action) => {
                 colors: { ...state.colors }, 
                 defaultColors: { ...state.defaultColors },
                 altColors: { ...state.altColors },
-                mask: { ...state.mask }
-            }
-
-            updatedState = { 
-                ...state, 
-                colors: { ...state.colors }, 
-                defaultColors: { ...state.defaultColors },
-                altColors: { ...state.altColors },
                 mask: { ...state.mask },
-                hover: action.hover
+                //chnaged props
+                hover: action.hover,
+                configPage: action.configPage
             }
             
             return updatedState
@@ -125,14 +120,13 @@ const reducer = (state = initialState, action) => {
 
 
         case actionTypes.NAV_MOUSEOVER_HANDLER: {
-            console.log('test')
             let updatedState = { 
                 ...state, colors: { ...state.colors }, mask: { ...state.mask }
             }
 
             let test = null;
 
-            if(action.payload.event.className.includes("Button")) {
+            if(action.payload.event.className && action.payload.event.className.includes("Button")) {
                 updatedState = { 
                     ...updatedState,
                     mask: { ...state.mask },

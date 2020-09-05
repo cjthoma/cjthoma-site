@@ -10,6 +10,7 @@ class NavItem extends Component {
     constructor(props) {
         super(props);
         this.navItemRef = React.createRef();  
+        this.configNav = React.createRef();  
     }
 
     componentDidMount() {
@@ -30,19 +31,6 @@ class NavItem extends Component {
             delay: (el, i) => 50 * i,
             easing: 'easeOutExpo'
         });
-
-        setTimeout(() => {
-
-        if(this.props.hover === this.props.title) {
-            console.log('fire')
-            console.log(navItem)
-            //add a button to do this
-            this.props.navMouseOver(navItem, '0px');
-        }
-        
-
-        }, 3000)
-
     }
 
     render () {
@@ -114,6 +102,7 @@ class NavItem extends Component {
 const mapStateToProps = (state) => {
     return {
         hover: state.hover,
+        configPage: state.configPage,
     }
 }
 const mapDispatchToProps = (dispatch) => {

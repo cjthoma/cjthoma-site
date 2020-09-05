@@ -9,12 +9,56 @@
     color: white;
 }
 
+.PageStylrContainer {
+    display: flex;
+    width: 100%;
+}
+
 .ColorSelectorContainer {
     position: relative;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    width: 100%;
-    padding: 20px;
+    width: 70%;
+    padding: 0 5px;
 }
+
+
+.Config nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.navSelected {
+    color: 'blue';
+}
+
+.navDeselected {
+    opacity: .2;
+}
+
+.Config nav h6 {
+    padding: 0 20px;
+}
+
+.LayoutContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0 5px;
+    width: 100%;
+    bottom: 100px;
+    right: 5%;
+}
+
+.LayoutContainer h5 {
+    position: relative;
+    padding: 0 50px;
+    right: 20px;
+    bottom: -100px;
+}
+

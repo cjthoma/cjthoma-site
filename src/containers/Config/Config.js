@@ -13,49 +13,140 @@ import * as actions from '../../store/actions/index';
 import { render } from 'react-dom';
 
 class Config extends Component {
+    constructor(props) {
+        super(props);
+        this.navDefRef = React.createRef();  
+        this.navAltRef = React.createRef();  
+        this.navTxtRef = React.createRef();  
+    }
+
+    state = {
+        navFocusItem: 'DEFAULT',
+        hover: 'WORK'
+    }
 
     componentDidMount() {
         this.props.fetchInitState();
-        this.props.setHover('ABOUT');
     }
 
-    setHover = () => {
-
+    onClickHandler = (event) => {
+        this.setState({
+            navFocusItem: event.target.textContent
+        })
     }
 
     render() {
+        let selectedNavDef = { color: 'white' }
+        let selectedNavTxt = { color: 'white' }
+        let selectedNavAlt = { color: 'white' }
+
+        let selectedNavStyleList = { color: 'blue', pointerEvents: 'show' }
+        let colorSelector = null;
+        let setHoverState = {
+            event: {
+                textContent: "WORK"
+            },
+            maskSize: '0px'
+        }
+
+        switch(this.state.navFocusItem) {
+            case 'DEFAULT': {
+                selectedNavDef = { color: 'red' }
+                colorSelector = (
+                    <div className={style.ColorSelectorContainer}>
+                    <ColorSelector key={"primary-1"} colorType={this.props.colors.primary} title={'primary'}></ColorSelector>
+                    <ColorSelector key={"secondary-1"} colorType={this.props.colors.secondary} title={'secondary'}></ColorSelector>
+                    <ColorSelector key={"alt-1"} colorType={this.props.colors.altColor} title={'altColor'}></ColorSelector>
+                    </div>
+                )
+                break;
+            }
+
+            case 'TEXT': {
+                selectedNavTxt = { color: 'red' }
+                colorSelector = (
+                    <div className={style.ColorSelectorContainer}>
+                    <ColorSelector key={"textColor"} colorType={this.props.colors.textColor} title={'textColor'}></ColorSelector>
+                    <ColorSelector key={"textHighlight"} colorType={this.props.colors.textHighlight} title={'textHighlight'}></ColorSelector>
+                    <ColorSelector key={"textDefocus"} colorType={this.props.colors.textDefocus} title={'textDefocus'}></ColorSelector>
+                    </div>
+                )
+                break;
+            }
+
+            case 'ALTERNATE': {
+                selectedNavAlt = { color: 'red' }
+                colorSelector = (
+                    <div className={style.ColorSelectorContainer}>
+                    <ColorSelector key={"alt-primary"} colorType={this.props.altColors.primary} title={'alt-primary'} alt={true}></ColorSelector>
+                    <ColorSelector key={"alt-secondary"} colorType={this.props.altColors.secondary} title={'alt-secondary'} alt={true}></ColorSelector>
+                    <ColorSelector key={"alt-altColor"} colorType={this.props.altColors.altColor} title={'alt-altColor'} alt={true}></ColorSelector>
+                    </div>
+                )
+                break;
+            }
+
+            default: {
+                colorSelector = <p>something went wrong...</p>
+                break;
+            }
+        }
+
         return (
             <div className={style.Config}>
             <h1>HOME BUTTON</h1>
 
-            <Layout mask={{backgroundColor: this.props.colors.altColor, pointerEvents: 'none'}}
-            primary={this.props.colors.secondary} 
-            secondary={this.props.colors.primary} />
-
-            <Layout mask={{WebkitClipPath: 'ellipse(100px 1000px at center)', clipPath: 'inset(0% 50% 0% 100%)',backgroundColor: this.props.altColors.altColor, pointerEvents: 'none'}}
-            primary={this.props.colors.primary} 
-            secondary={this.props.colors.secondary} />
-
             <h1>COLOR PALLETTE SELECTION</h1>
-                <h6>DEFAULT COLOR SCHME</h6>
+            <div className={style.PageStylrContainer}>
                 <div className={style.ColorSelectorContainer}>
-                    <ColorSelector colorType={this.props.colors.primary} title={'primary'}></ColorSelector>
-                    <ColorSelector colorType={this.props.colors.secondary} title={'secondary'}></ColorSelector>
-                    <ColorSelector colorType={this.props.colors.altColor} title={'altColor'}></ColorSelector>
-                    <ColorSelector colorType={this.props.colors.textColor} title={'textColor'}></ColorSelector>
-                    <ColorSelector colorType={this.props.colors.textHighlight} title={'textHighlight'}></ColorSelector>
-                    <ColorSelector colorType={this.props.colors.textDefocus} title={'textDefocus'}></ColorSelector>
-                </div>
-                <h6>ALTERNATE COLOR SCHME</h6>
-                <div className={style.ColorSelectorContainer}>
-                    <ColorSelector colorType={this.props.altColors.primary} title={'alt-primary'} alt={true}></ColorSelector>
-                    <ColorSelector colorType={this.props.altColors.secondary} title={'alt-secondary'} alt={true}></ColorSelector>
-                    <ColorSelector colorType={this.props.altColors.altColor} title={'alt-altColor'} alt={true}></ColorSelector>
-                </div>
-                <h1>Reveal Project Button</h1>
-                <NewProject></NewProject>
-    
+                    <nav>
+                        <h6 
+                            ref={this.navDefRef}
+                            style={selectedNavDef} 
+                            onClick={(event) => {
+                                this.onClickHandler(event);
+                                this.props.setHover(null);
+                                this.props.navMouseOut(setHoverState);
+                            }}>DEFAULT</h6>
+                        <h6 
+                            ref={this.navTxtRef}
+                            style={selectedNavTxt} 
+                            onClick={(event) => {
+                                this.onClickHandler(event);
+                                this.props.setHover(null);
+                                this.props.navMouseOut(setHoverState);
+                            }}>TEXT</h6>
+                        <h6 
+                            ref={this.navAltRef}
+                            style={selectedNavAlt}  
+                            onClick={(event) =>{
+                                this.onClickHandler(event);
+                                this.props.setHover('WORK');
+                                this.props.navMouseOver(setHoverState);
+                            }}>ALTERNATE</h6>
+                    </nav>
+                    { colorSelector }
+                 </div> {/* COLOR SELECTOR CONTAINER END */}
+
+                 <div className={style.LayoutContainer}>
+                    <h5>FOREGROUND</h5>
+                    <Layout mask={{backgroundColor: this.props.colors.altColor, pointerEvents: 'none', transform: 'scale(.5)'}}
+                    primary={this.props.colors.secondary} 
+                    secondary={this.props.colors.primary} />
+
+                    <div style={{width: '1px', height: '400px', backgroundColor: this.props.colors.primary, position: 'relative', left: '-28px', bottom: '-175px'}}></div>
+                    
+                    <h5>MASK</h5>
+                    <Layout mask={{ WebkitClipPath: 'inset(0% 50% 0% 100%)', clipPath: 'inset(0% 50% 0% 100%)',backgroundColor: this.props.altColors.altColor, pointerEvents: 'none', transform: 'scale(.5)'}}
+                    primary={this.props.colors.primary} 
+                    secondary={this.props.colors.secondary} />
+                </div> {/* LAYOUT CONTAINER END */}
             </div>
+
+            <h1>Reveal Project Button</h1>
+            <NewProject></NewProject>
+
+            </div> /* PAGE CONTAINER END */
         )
     }
     
@@ -73,8 +164,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchInitState: () => dispatch(actions.fetchInitState()),
-        setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection))
-
+        setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection)),
+        navMouseOver: (event, maskSize) => dispatch({type: actionTypes.NAV_MOUSEOVER_HANDLER, payload: { event: event, maskSize: maskSize }}),
+        navMouseOut: (event) => dispatch({type: actionTypes.NAV_MOUSEOUT_HANDLER, payload: event})
     }
 }
 

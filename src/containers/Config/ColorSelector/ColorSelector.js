@@ -8,7 +8,6 @@ import * as actions from '../../../store/actions/index';
 class ColorSelector extends Component {
     state = {
         input: this.props.colorType,
-        title: this.props.title,
         isHex: true
     }
 
@@ -35,7 +34,7 @@ class ColorSelector extends Component {
         // if hex is valid
         if(this.state.isHex){
             colorSelectorTitle = <h1 style={{color: this.props.colorType}}>{this.props.title}</h1>
-            buttonStyleList = this.state.input ? { backgroundColor: this.state.input } : { backgroundColor: this.props.colorType }
+            buttonStyleList = this.state.input ? { backgroundColor: this.state.input, color: 'white'} : { backgroundColor: this.props.colorType, color: 'white' }
             boxHighlightStyleList = this.state.input ? { backgroundColor: this.state.input } : { backgroundColor: this.props.colorType }
         } else { // if hex is not valie
             buttonStyleList = { pointerEvents: 'none', backgroundColor: 'red', color: this.props.colorType} 
@@ -53,32 +52,42 @@ class ColorSelector extends Component {
                 <button onClick={
                     () => {
                         let previosColors = null;
-                        let colorType = null;
+                        let colorType = this.props.title;
+
                         if(this.props.alt) {
                             previosColors = this.props.altColors;
-                            colorType = this.state.title.replace(/^alt-/, '');
+                            colorType = this.props.title.replace(/^a/, '')
                         } else {
+                            console.log('def colors')
                             previosColors = this.props.colors;
-                            colorType = this.state.title;
                         }
 
                         if(this.state.input) {
-                            alert('Color Updated!' +'\n' 
-                                +'[' +this.props.colors[colorType] +'] => [' +[this.state.input] +']')
+                                setTimeout(() => {
+                                    alert('Color Updated!' +'\n' 
+                                    +'[' +this.props.colors[colorType] +'] => [' +[this.state.input] +']')
+                                    this.props.fetchInitState()
+                                    
+                                    setTimeout(() => {
+                                        if(this.props.alt) {
+                                            this.props.setHover('WORK');
+                                            this.props.navMouseOver({ event: { textContent: "WORK" }, maskSize: '0px' });
+                                        }
+                                    }, 2000)
+                                }, 100)
 
-                            return this.props.configColor(this.state.input, this.state.title, previosColors)
+                            return this.props.configColor(this.state.input, this.props.title, previosColors)
                         } else {
                             alert('Invalid or null type, plase try again.');
                             return;
                         }
+                        
                     } 
                     } className={style.Button} style={buttonStyleList}>Send</button>
             </div>
         )
     }
 }
-
-// this.this.props.configColor(event)
 
 
 const mapStateTothisProps = (state) => {
@@ -91,6 +100,9 @@ const mapStateTothisProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         configColor: (hexValue, colorType, previousColors) => dispatch(actions.configColor(hexValue, colorType, previousColors)),
+        navMouseOver: (event, maskSize) => dispatch({type: actionTypes.NAV_MOUSEOVER_HANDLER, payload: { event: event, maskSize: maskSize }}),
+        setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection)),
+        fetchInitState: () => dispatch(actions.fetchInitState()),
     }
 }
 
