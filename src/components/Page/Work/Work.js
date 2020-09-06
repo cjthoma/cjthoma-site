@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
 import axios from 'axios';
 
 import Project from './Project/Project';
@@ -24,50 +23,6 @@ const Work = (props) => {
     let kunjaniImgs = [kunjaniImg1, kunjaniImg2, kunjaniImg3];
     let mixxerImgs = [mixxerImg1, mixxerImg2, mixxerImg3, mixxerImg4];
     let portfolioImgs = [portfolio1, portfolio2, portfolio3];
-
-    
-
-  // Set the configuration for your app
-  // TODO: Replace with your app's config object
-
-    var firebaseConfig = {
-        apiKey: '<your-api-key>',
-        authDomain: '<your-auth-domain>',
-        databaseURL: 'https://cjthoma-aedf4.firebaseio.com/',
-        storageBucket: 'gs://cjthoma-aedf4.appspot.com/'
-    };
-    if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    }
-
-    var storage = firebase.storage();
-
-    var imgRef = storage.ref('/project_imgs/');
-    console.log(imgRef)
-
-    imgRef.getDownloadURL().then(function(url) {
-        // `url` is the download URL for 'images/stars.jpg'
-        console.log(url)
-        // // This can be downloaded directly:
-        // var xhr = new XMLHttpRequest();
-        // xhr.responseType = 'blob';
-        // xhr.onload = function(event) {
-        //     var blob = xhr.response;
-        // };
-        // xhr.open('GET', url);
-        // xhr.send();
-
-        // // Or inserted into an <img> element:
-        // var img = document.getElementById('myimg');
-        // img.src = url;
-        }).catch(function(error) {
-        // Handle any errors
-        });
-        
-    
-    // console.log(imagesRef);
-
-
 
     let projects = [];
 

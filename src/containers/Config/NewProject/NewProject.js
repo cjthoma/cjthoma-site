@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { storage } from '../../../store/firebase'
 import axios from 'axios';
-
 
 import style from './NewProject.module.css';
 import * as actionTypes from '../../../store/actions/actionTypes';
+import * as actions from '../../../store/actions/index';
 
-class Config extends Component {
+
+class NewProJect extends Component {
     state = {
         newProject: {
             title: null,
@@ -13,7 +16,7 @@ class Config extends Component {
             description: null,
             imgs: null
         },
-        imgs: ['test']
+        imgs: []
     }
 
     inputOnChangeHandler = (event) => {
@@ -25,77 +28,84 @@ class Config extends Component {
         })
     }
 
-    imgInputChangeHandler = (event) => {
-        
-        let updatedState = [...this.state.imgs];
-        console.log(updatedState);
-        updatedState.push(event.target.files[0]);
-        console.log(updatedState);
 
-        this.setState({
-            newProject:  this.state.newProject,
-            imgs:  [updatedState]
-        })
-    }
-    
 
     render () {
         return (
-            <div className={style.NewProject}>
-            <div className={style.ColorSelector}>
-                <div className={style.BoxHighlight} style={boxHighlightStyleList}></div>
-                <div className={style.InputContainer}>
-                { colorSelectorTitle }
-                    <input onChange={(event) => this.inputOnChangeHandler(event)} defaultValue={this.props.colorType} type={'text'} style={{backgroundColor: this.props.colorType}}></input>
-                </div>
-    
-                <button className={style.Button} style={buttonStyleList}>Send</button>
-            </div>
-
-
-
-
-            <div className={style.Container}>
-                <h1>ADD NEW PROJECT TO WORK PAGE</h1>
-                <div className={style.Title}>
-                    <div>
-                        <h6>TITLE</h6>
-                        <input 
-                            type="text" 
-                            onChange={(event) => this.inputOnChangeHandler(event)} 
-                            ></input>
+            <div className={style.OuterWrapper}>
+                <div className={style.InnerWrapper}>
+                    <div className={style.NewProJect}>
+                    <div className={style.BoxHighlight} style={{backgroundColor: this.props.colors.textColor}}></div>
+                        <div className={style.InputContainer}>
+                            <h1 style={{color: this.props.colors.textColor}}>TITLE</h1>
+                            <input type={'text'} style={{backgroundColor: this.props.colors.textColor}}></input>
+                        </div>
                     </div>
-    
-                    <div>   
-                        <h6>STACK</h6>
-                        <input 
-                            type="text" 
-                            onChange={(event) => this.inputOnChangeHandler(event)}
-                            ></input>
+
+                    <div className={style.NewProJect}>
+                    <div className={style.BoxHighlight} style={{backgroundColor: this.props.colors.textColor}}></div>
+                        <div className={style.InputContainer}>
+                            <h1 style={{color: this.props.colors.textColor}}>STACK - (seperate each item by a comma)</h1>
+                            <input type={'text'} style={{backgroundColor: this.props.colors.textColor}}></input>
+                        </div>
                     </div>
-                </div>
-    
-                <div className={style.Description}>
-                    <h6>DESCRIPTION</h6>
-                    <input 
-                        type="text" 
-                        onChange={(event) => this.inputOnChangeHandler(event)}
-                        style={{width: '60vw', height: '200px'}}></input>
-                </div>
-                
-                <div className={style.AddImages}>
-                    <h6>ADD IMAGES...</h6>
-                    <input 
-                        type="file" 
-                        onChange={(event) => this.imgInputChangeHandler(event)}
-                        style={{width: '500px'}}></input>
-                </div>
-                <button onClick>ADD PROJECT</button>
-            </div>
-        </div>
+
+                    <div className={style.NewProJect}>
+                    <div className={style.BoxHighlight} style={{backgroundColor: this.props.colors.textColor}}></div>
+                        <div className={style.InputContainer}>
+                            <h1 style={{color: this.props.colors.textColor}}>ATTACH IMAGES</h1>
+                            <input onChange={((event) => {
+
+
+                                this.props.addImageToDB(event.target.files[0])
+                                let test = event.target.files[0].name
+                                setTimeout(() => {
+                                    storage.ref('project_imgs').child(test).getDownloadURL().then(url => {
+                                        this.setState({
+                                            imgs: [...this.state.imgs, url]
+                                        })
+                                    })
+
+                                }, 2000)
+
+                            })}  accept={"image/png, image/jpeg"} type={'file'} id="upload" style={{backgroundColor: this.props.colors.textColor, display: 'none'}}></input>
+                            <label className={style.Label}  style={{backgroundColor: this.props.colors.textColor}} for="upload">Upload File...</label>
+                        </div>
+                    </div>
+                </div> {/**INNER WRAPPER ( - TITLE - STACK - ATTACH ITEMS - ) */}
+                <div className={style.NewProJect} style={{position: 'relative', width: '500px', height: '330px', margin: '0', top: '25px'}}>
+                    <div className={style.BoxHighlight} style={{backgroundColor: this.props.colors.textColor}}></div>
+                        <div className={style.InputContainer}>
+                            <h1 style={{color: this.props.colors.textColor}}>DESCRIPTION</h1>
+                            <input type={'text'} style={{backgroundColor: this.props.colors.textColor, width: '93%', height: '280px'}}></input>
+                        </div>
+                    </div>
+
+                    <div className={style.ImgContainer} style={{backgroundColor: this.props.colors.textColor}}>
+                        <h1 >img</h1>
+                    </div>
+
+                </div> /**OUTTER WRAPPER ( - DESCRIPTION - IMAGE ITEMS - ) */
         )
     }
 }
 
-export default Config;
+const mapStateTothisProps = (state) => {
+    return {
+        colors: state.colors,
+        altColors: { ...state.altColors }
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        configColor: (hexValue, colorType, previousColors) => dispatch(actions.configColor(hexValue, colorType, previousColors)),
+        navMouseOver: (event, maskSize) => dispatch({type: actionTypes.NAV_MOUSEOVER_HANDLER, payload: { event: event, maskSize: maskSize }}),
+        setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection)),
+        fetchInitState: () => dispatch(actions.fetchInitState()),
+        addImageToDB: (file) => dispatch(actions.addImageToDB(file)),
+    }
+}
+
+export default connect(mapStateTothisProps, mapDispatchToProps)(NewProJect);
 

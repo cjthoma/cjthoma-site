@@ -49,7 +49,7 @@ class ColorSelector extends Component {
                     <input onChange={(event) => this.inputOnChangeHandler(event)} defaultValue={this.props.colorType} type={'text'} style={{backgroundColor: this.props.colorType}}></input>
                 </div>
     
-                <button onClick={
+                <button onClick={ // on click handler
                     () => {
                         let previosColors = null;
                         let colorType = this.props.title;

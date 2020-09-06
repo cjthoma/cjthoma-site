@@ -1,71 +1,83 @@
-.NewProject {
+.NewProJect {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    padding: 20px 0;
-    background-color: #121212;
-    color: white;
-}
-
-.NewProject div {
     background-color: #1a1a1b;
-    border: 1px solid #474748;
-    border-radius: 5px;
-    padding: 15px 20px;
+    width: 25%;
+    min-width: 300px;
+    height: 100px;
+    margin: 20px auto;
 }
 
-.Container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 80%;
-}
-
-.Title {
+.OuterWrapper {
+    padding: 20px;
     display: flex;
     flex-direction: row;
-    text-align: center;
+}
+
+.InnerWrapper {
+    width: 30%;
+}
+
+.BoxHighlight {
+    height: 100%;
+    width: 2px;
+    transition: background-color 2s ease;
+}
+
+.NewProJect h1 {
+    padding-left: 10px;
+    font-size: 12px;
+    width: 20px;
+    font-weight: 300;
+    white-space: nowrap;
+    transition: background-color 2s ease;
+}
+
+.NewProJect input {
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 40px;
+    color: white;
+    width: 90%;
+    height: 50px;
+    bottom: 10px;
+    border: hidden;
+    border: 1 solid #474748;
+    transition: background-color 2s ease;
+}
+
+.NewProJect input:focus{
+    outline: none;
+}
+
+.NewProJect input[type="file"] {
+
+}
+
+.Label {
+    display: flex;
     justify-content: center;
-    color: red;
-    height: 90px;
-    margin: 20px 0;
+    align-items:center;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 90%;
+    height: 50px;
+    bottom: 10px;
+    font-size: 12px;
+    border: hidden;
+    transition: background-color 2s ease;
+    cursor: pointer;
 }
 
-.Title div {
+.InputContainer {
     width: 100%;
-    padding: 0;
 }
 
-.Title input {
+.ImgContainer {
     position: relative;
-    width: 80%;
-    padding: 0;
-    bottom: 15px;
-}
-
-.Description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.Description input {
-    position: relative;
-    width: 80%;
-}
-
-.AddImages {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.AddImages input {
-    position: relative;
-    width: 80%;
+    width: 50px;
+    height: 50px;
+    top: 25px;
+    margin: 0 15px;
 }
