@@ -46,7 +46,7 @@ class ColorSelector extends Component {
                 <div className={style.BoxHighlight} style={boxHighlightStyleList}></div>
                 <div className={style.InputContainer}>
                 { colorSelectorTitle }
-                    <input onChange={(event) => this.inputOnChangeHandler(event)} defaultValue={this.props.colorType} type={'text'} style={{backgroundColor: this.props.colorType}}></input>
+                    <input maxlength="7" onChange={(event) => this.inputOnChangeHandler(event)} defaultValue={this.props.colorType} type={'text'} style={{backgroundColor: this.props.colorType}}></input>
                 </div>
     
                 <button onClick={ // on click handler

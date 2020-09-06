@@ -128,13 +128,13 @@ class Config extends Component {
                     { colorSelector }
                  </div> {/* COLOR SELECTOR CONTAINER END */}
 
-                 <div className={style.LayoutContainer}>
-                    <h5>FOREGROUND</h5>
+                <div className={style.LayoutContainer}>
+                    <h5>BACKGROUND</h5>
                     <Layout mask={{backgroundColor: this.props.colors.altColor, pointerEvents: 'none', transform: 'scale(.5)'}}
                     primary={this.props.colors.secondary} 
                     secondary={this.props.colors.primary} />
 
-                    <div style={{width: '1px', height: '400px', backgroundColor: this.props.colors.primary, position: 'relative', left: '-28px', bottom: '-175px'}}></div>
+                    <div style={{zIndex: '1', width: '1px', height: '400px', backgroundColor: this.props.colors.primary, position: 'relative', left: '-28px', bottom: '-175px'}}></div>
                     
                     <h5>MASK</h5>
                     <Layout mask={{ WebkitClipPath: 'inset(0% 50% 0% 100%)', clipPath: 'inset(0% 50% 0% 100%)',backgroundColor: this.props.altColors.altColor, pointerEvents: 'none', transform: 'scale(.5)'}}
@@ -143,8 +143,10 @@ class Config extends Component {
                 </div> {/* LAYOUT CONTAINER END */}
             </div>
 
-            <h1>Reveal Project Button</h1>
+            <h1>ADD NEW PROJECT</h1>
             <NewProject></NewProject>
+
+            <h1>EDIT PROJECT</h1>
 
             </div> /* PAGE CONTAINER END */
         )

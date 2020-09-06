@@ -10,7 +10,6 @@ export const fetchProjects = () => {
         .catch(error => {
             console.log(error);
         });
-        
     }
 }
 
@@ -18,5 +17,17 @@ export const setProjects = (state) => {
     return {
         type: actionTypes.FETCH_PROJECTS,
         projects: state
+    }
+}  
+
+export const addNewProject = (project) => {
+    console.log(project);
+    return dispatch => {
+        axios.put('https://cjthoma-aedf4.firebaseio.com/projects.json',
+            { ...project })
+        .then(response => {
+            // console.log(response)
+        }).catch(error => {
+        })
     }
 }

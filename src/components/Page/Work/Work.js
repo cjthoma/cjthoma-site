@@ -6,30 +6,18 @@ import Project from './Project/Project';
 import style from './Work.module.css';
 import * as actionTypes from '../../../store/actions/actionTypes';
 
-import kunjaniImg1 from '../../../assets/images/kunjani_imgs/Beer&Food.jpg';
-import kunjaniImg2 from '../../../assets/images/kunjani_imgs/Wine.jpg';
-import kunjaniImg3 from '../../../assets/images/kunjani_imgs/HappyHour.jpg';
-
-import mixxerImg1 from '../../../assets/images/mixxer_imgs/1.png';
-import mixxerImg2 from '../../../assets/images/mixxer_imgs/2.png';
-import mixxerImg3 from '../../../assets/images/mixxer_imgs/3.png';
-import mixxerImg4 from '../../../assets/images/mixxer_imgs/4.png';
-
-import portfolio1 from '../../../assets/images/portfolio_site/1.png';
-import portfolio2 from '../../../assets/images/portfolio_site/2.png';
-import portfolio3 from '../../../assets/images/portfolio_site/3.png';
-
 const Work = (props) => {
-    let kunjaniImgs = [kunjaniImg1, kunjaniImg2, kunjaniImg3];
-    let mixxerImgs = [mixxerImg1, mixxerImg2, mixxerImg3, mixxerImg4];
-    let portfolioImgs = [portfolio1, portfolio2, portfolio3];
-
     let projects = [];
 
     for(let key in props.projects) {
         let stack = [];
+        let imgs = [];
         for(let s in props.projects[key].stack) {
-            stack.push(s);
+            stack.push(props.projects[key].stack[s])
+        }
+
+        for(let i in props.projects[key].imgs) {
+            imgs.push(props.projects[key].imgs[i])
         }
 
         projects.push (
@@ -39,7 +27,7 @@ const Work = (props) => {
             stack={stack}
             date={props.projects[key].date}
             index={1}
-            imgs={portfolioImgs}
+            imgs={imgs}
             primary={props.secondary}
             secondary={props.primary} />
         );
@@ -48,7 +36,7 @@ const Work = (props) => {
 
     return (
         <div className={style.Work}>
-            { projects }
+            { projects.reverse() }
         </div>
     );
 };

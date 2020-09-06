@@ -4,7 +4,7 @@
     background-color: #1a1a1b;
     width: 25%;
     min-width: 300px;
-    height: 100px;
+    height: 70px;
     margin: 20px auto;
 }
 
@@ -26,7 +26,8 @@
 
 .NewProJect h1 {
     padding-left: 10px;
-    font-size: 12px;
+    margin: 0;
+    font-size: 10px;
     width: 20px;
     font-weight: 300;
     white-space: nowrap;
@@ -35,34 +36,39 @@
 
 .NewProJect input {
     position: relative;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin: 5px 10px;
     font-size: 40px;
     color: white;
     width: 90%;
-    height: 50px;
-    bottom: 10px;
+    height: 35px;
     border: hidden;
     border: 1 solid #474748;
     transition: background-color 2s ease;
 }
 
-.NewProJect input:focus{
+.NewProJect input:focus {
     outline: none;
 }
 
-.NewProJect input[type="file"] {
-
+textarea {
+    position: relative;
+    margin: 5px 10px;
+    font-size: 20px;
+    width: 93%;
+    height: 280px;
+    color: white;
+    resize: none;
+    border: none;
+    outline: none;
 }
 
 .Label {
     display: flex;
     justify-content: center;
     align-items:center;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin: 5px 10px;
     width: 90%;
-    height: 50px;
+    height: 35px;
     bottom: 10px;
     font-size: 12px;
     border: hidden;
@@ -76,8 +82,23 @@
 
 .ImgContainer {
     position: relative;
-    width: 50px;
-    height: 50px;
-    top: 25px;
-    margin: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    top: 20px;
+    left: 25px;
+    margin: 5px 10px;
+}
+
+.ImgContainer img {
+    object-fit: cover;
+    width: 80%;
+    height: 80%;
+}
+
+.ImgsContainer {
+    display: flex;
+    flex-direction: column;
 }
