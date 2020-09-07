@@ -22,6 +22,7 @@ const Work = (props) => {
 
         projects.push (
             <Project 
+            key={props.projects[key].title}
             title={props.projects[key].title} 
             description={props.projects[key].description} 
             stack={stack}

@@ -137,7 +137,7 @@ class Config extends Component {
                     <div style={{zIndex: '1', width: '1px', height: '400px', backgroundColor: this.props.colors.primary, position: 'relative', left: '-28px', bottom: '-175px'}}></div>
                     
                     <h5>MASK</h5>
-                    <Layout mask={{ WebkitClipPath: 'inset(0% 50% 0% 100%)', clipPath: 'inset(0% 50% 0% 100%)',backgroundColor: this.props.altColors.altColor, pointerEvents: 'none', transform: 'scale(.5)'}}
+                    <Layout mask={{ WebkitClipPath: 'inset(0% 0% 0% 50%)', clipPath: 'inset(0% 0% 0% 50%)',backgroundColor: this.props.altColors.altColor, pointerEvents: 'none', transform: 'scale(.5)'}}
                     primary={this.props.colors.primary} 
                     secondary={this.props.colors.secondary} />
                 </div> {/* LAYOUT CONTAINER END */}

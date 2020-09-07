@@ -135,7 +135,7 @@ class NewProJect extends Component {
                     <div className={style.BoxHighlight} style={{backgroundColor: this.props.colors.textColor}}></div>
                         <div className={style.InputContainer}>
                             <h1 style={{color: this.props.colors.textColor}}>ATTACH IMAGES</h1>
-                            <input accept={"image/png, image/jpeg, image/gif"} type={'file'} id="upload" style={{backgroundColor: this.props.colors.textColor, display: 'none'}} 
+                            <input accept={"image/png, image/jpeg, image/gif, image/pdf"} type={'file'} id="upload" style={{backgroundColor: this.props.colors.textColor, display: 'none'}} 
                             onChange={((event) => {
                                 let file = event.target.files[0];
 
@@ -152,6 +152,7 @@ class NewProJect extends Component {
                                 (complete)=> {
                                     // complete function
                                     storage.ref('project_imgs').child(file.name).getDownloadURL().then(url => {
+                                        console.log(url);
                                         this.setState({
                                             imgs: [...this.state.imgs, url]
                                         })

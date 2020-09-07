@@ -26,7 +26,7 @@
 .NavItem h6 {
     position: relative;
     font-size: 12px;
-    top: 30px;
+    top: 5px;
     left: 20px;
     transition: color 1s ease, 
                 opacity 1s ease, 
@@ -45,7 +45,7 @@
 
     .NavItem h6 {
         font-size: 10px;
-        top: -5px;
+        top: -15px;
     }
 }
 
@@ -63,7 +63,7 @@
     .NavItem h6 {
         position: relative;
         font-size: 8px;
-        top: -5px;
+        top: -10px;
         left: 5px;
     }
 }

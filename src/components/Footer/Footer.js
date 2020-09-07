@@ -34,11 +34,32 @@ class Footer extends Component {
         });
     }
 
+
     render() {
+
+        let gitHubStyleList = { color: this.props.secondary };
+        let linkedInStyleList = { color: this.props.secondary } ;
+
+        if(this.props.hover === 'GITHUB') {
+            linkedInStyleList = { color: this.props.colors.textDefocus, opacity: '.2' }
+        } else if (this.props.hover === 'LINKEDIN') {
+            gitHubStyleList = { color: this.props.colors.textDefocus, opacity: '.2' }
+        } else if (this.props.hover) {
+            gitHubStyleList = { color: this.props.colors.textDefocus, opacity: '.2' }
+            linkedInStyleList = { color: this.props.colors.textDefocus, opacity: '.2' }
+        }
         return (
-            <div ref={this.footerRef} style={{color: this.props.secondary}} className={style.Footer} onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} onMouseOut={(event) => this.props.mouseOut(event)}>
-                <span href={'https://www.github.com'}>GITHUB</span>
-                <span href={'https://www.linkedin.com/in/christian-thomas-74023b121/'}>LINKEDIN</span></div>
+            <div ref={this.footerRef} className={style.Footer}>
+                <a 
+                    style={gitHubStyleList} 
+                    onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
+                    onMouseOut={(event) => this.props.mouseOut(event)} 
+                    href={"https://github.com/cjthoma"}>GITHUB</a>
+                <a 
+                    style={linkedInStyleList} 
+                    onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
+                    onMouseOut={(event) => this.props.mouseOut(event)} 
+                    href={"https://www.linkedin.com/in/christian-thomas-74023b121/"}>LINKEDIN</a></div>
         );
     };
 };
@@ -47,7 +68,8 @@ class Footer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        
+        colors: state.colors,
+        hover: state.hover
     }
 }
 

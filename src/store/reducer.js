@@ -196,7 +196,7 @@ const reducer = (state = initialState, action) => {
             // chrome
             if(isChrome) {
                 y = 130;
-                x = 0;
+                x = 40;
             };
 
             // safari

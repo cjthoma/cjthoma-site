@@ -102,6 +102,7 @@ const mapStateToProps = (state) => {
     return {
         mouseX: state.mousePosX,
         mouseY: state.mousePosY,
+        navHover: state.hover
     }
 }
 const mapDispatchToProps = (dispatch) => {
