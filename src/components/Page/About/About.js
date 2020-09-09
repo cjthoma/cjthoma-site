@@ -30,12 +30,20 @@ const about = (props) => {
                     If you have an offer, feel free to <span style={spanHighlightStyle}>get in touch</span> via the links on the <span style={spanHighlightStyle}>contact page</span>.
 
                 </p>
-                <a style={{color: props.defaultColors.primary}}
-                className={style.Resume}
-                    href={"https://firebasestorage.googleapis.com/v0/b/cjthoma-aedf4.appspot.com/o/project_imgs%2FChristian%20Thomas.pdf?alt=media&token=97358f88-0a69-4020-b984-2fc34d533a04"}
-                    onMouseEnter={(event) => props.mouseOver(event.target, '1000px')} 
-                    onMouseOut={(event) => props.mouseOut(event)}
-                >RESUME</a>
+
+
+                <div className={style.LinksWrapper}>
+                    <a 
+                        className={style.LinkContainer}
+                        onMouseEnter={(event) => props.mouseOver(event.target, '1000px')} 
+                        onMouseOut={(event) => props.mouseOut(event)}
+                        href={"https://firebasestorage.googleapis.com/v0/b/cjthoma-aedf4.appspot.com/o/project_imgs%2FChristian%20Thomas.pdf?alt=media&token=97358f88-0a69-4020-b984-2fc34d533a04"}>
+                        <div style={{ color: props.defaultColors.primary }}>RESUME</div>
+                        <div style={{color: props.primary}} className={style.Arrow}></div>
+                    </a>
+                </div>
+
+                
             </Fade>
         </div>
     );
@@ -44,7 +52,7 @@ const about = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        defaultColors: state.defaultColors
+        defaultColors: state.reducer.defaultColors
     }
 }
 const mapDispatchToProps = (dispatch) => {

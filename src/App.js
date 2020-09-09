@@ -10,11 +10,11 @@ import * as actions from './store/actions/index';
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchInitState();
     this.props.fetchProjects();
   }
 
   render() {
+    this.props.fetchInitState();
     let loadPage = null;
 
     // Serves page without mask for mobile version (page < 400px)
@@ -52,8 +52,9 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    colors: { ...state.colors },
-    mask: { ...state.mask},
+    colors: { ...state.reducer.colors },
+    mask: { ...state.reducer.mask},
+    navFocusItem: state.reducer.navFocusItem
   }
 }
 
@@ -62,7 +63,8 @@ const mapDispatchToProps = (dispatch) => {
       mouseMove: (event) => dispatch({type: actionTypes.MOUSE_MOVE, payload: event}),
       onPageScroll: (event) => dispatch({type: actionTypes.ON_SCROLL_HANDLER, payload: event}),
       fetchInitState: () => dispatch(actions.fetchInitState()),
-      fetchProjects: () => dispatch(actions.fetchProjects())
+      fetchProjects: () => dispatch(actions.fetchProjects()),
+      authCheckState: () => dispatch(actions.authCheckState())
   }
 }
 

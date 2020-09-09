@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 
 let firebaseConfig = {
-    apiKey: '<your-api-key>',
+    apiKey: ' AIzaSyC2sko3pCGWr8LarbmBaiFbyXalZ064lSg',
     authDomain: '<your-auth-domain>',
     databaseURL: 'gs://cjthoma-aedf4.appspot.com/',
     storageBucket: 'gs://cjthoma-aedf4.appspot.com/'

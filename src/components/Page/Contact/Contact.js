@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Fade from 'react-reveal/Fade';
 import style from './Contact.module.css';
 import * as actionTypes from '../../../store/actions/actionTypes';
-import { link } from 'fs';
 
 const Contact = (props) => {
     let contactStyle = { WebkitTextStroke: '1px ' +props.secondary, color: 'transparent' };
@@ -78,7 +77,7 @@ const Contact = (props) => {
                 <a 
                     className={style.LinkContainer}
                     style={emailStyle}
-                    onMouseEnter={(event) => props.mouseOver(event.target, '5px')} 
+                    onMouseEnter={(event) => props.mouseOver(event.target, '0px')} 
                     onMouseOut={(event) => props.mouseOut(event)}
                     href={"mailto:cjthoma79@gmail.com?"}>
                     <div style={emailStyle}>EMAIL</div>
@@ -88,7 +87,7 @@ const Contact = (props) => {
                 <a 
                     className={style.LinkContainer}
                     style={linkedInStyle}
-                    onMouseEnter={(event) => props.mouseOver(event.target, '5px')} 
+                    onMouseEnter={(event) => props.mouseOver(event.target, '0px')} 
                     onMouseOut={(event) => props.mouseOut(event)}
                     href={"https://www.linkedin.com/in/christian-thomas-74023b121/"}>
                     <div style={linkedInStyle}>LINKEDIN</div>
@@ -98,7 +97,7 @@ const Contact = (props) => {
                 <a 
                     className={style.LinkContainer}
                     style={gitStyle}
-                    onMouseEnter={(event) => props.mouseOver(event.target, '5px')} 
+                    onMouseEnter={(event) => props.mouseOver(event.target, '0px')} 
                     onMouseOut={(event) => props.mouseOut(event)}
                     href={"https://github.com/cjthoma"}>
                     <div style={gitStyle}>GITHUB</div>
@@ -108,7 +107,7 @@ const Contact = (props) => {
                 <a 
                     className={style.LinkContainer}
                     style={resumeStyle}
-                    onMouseEnter={(event) => props.mouseOver(event.target, '5px')} 
+                    onMouseEnter={(event) => props.mouseOver(event.target, '0px')} 
                     onMouseOut={(event) => props.mouseOut(event)}
                     href={"https://firebasestorage.googleapis.com/v0/b/cjthoma-aedf4.appspot.com/o/project_imgs%2FChristian%20Thomas.pdf?alt=media&token=97358f88-0a69-4020-b984-2fc34d533a04"}>
                     <div style={resumeStyle}>RESUME</div>
@@ -128,8 +127,8 @@ const Contact = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        defaultColors: state.defaultColors,
-        hover: state.hover
+        defaultColors: state.reducer.defaultColors,
+        hover: state.reducer.hover
     }
 }
 const mapDispatchToProps = (dispatch) => {

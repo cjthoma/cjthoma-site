@@ -33,23 +33,48 @@
     transition: color 1s ease-in-out;
 }
 
-.About a {
-    position: relative;
-    font-size: 20px;
-    font-weight: 300;
-    letter-spacing: 3px;
-    -webkit-text-stroke: 0px transparent;
-    transition: color 1s ease-in-out;
-    text-decoration: underline;
-    padding: 20px 10px;
-    transition: transform 2s ease-in-out,
-                letter-spacing 2s ease-in-out,
-                font-size 2s ease-in-out,
+.LinksWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
 }
 
-.About a:hover {
+.LinkContainer {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.LinkContainer div {
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-align: left;
+    font-weight: 600;
+    padding: 20px;
+    text-decoration: none;
+    -webkit-text-stroke: 0px transparent;
+    transition: opacity 1s ease-in-out,
+                letter-spacing 1s ease-in-out,
+                color 1s ease-in-out,
+                font-size 1s ease-in-out;
+}
+
+.LinkContainer div:hover {
     font-size: 25px;
     letter-spacing: -2px;
+}
+
+.Arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: 18px;
+    left: -15px;
+    background-image: url('../../../assets/icons/diagonal-arrow-right-up-outline-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    transform: scale(1.15);
 }
 
 @media only screen and (max-width: 950px) {
@@ -68,8 +93,10 @@
         position: relative;
         font-size: 12px;
         font-weight: 300;
+        padding: 20px 0px;
         width: 300px;
     }
+
 }
 
 @media only screen and (max-width: 700px) {
@@ -87,10 +114,18 @@
     }
 
     .About div {
-        font-size: 12px;
-        padding: 0 0 50px 0;
+        font-size: 16px;
     }
 
+    .LinkContainer div:hover {
+        font-size: 20px;
+    }
+
+    .Arrow {
+        top: 12px;
+        left: -20px;
+        transform: scale(.85);
+    }
 }
 
 @media only screen and (max-width: 425px) {

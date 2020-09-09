@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import Layout from '../../containers/Layout/Layout';
 
 import ColorSelector from './ColorSelector/ColorSelector';
 import NewProject from './NewProject/NewProject';
 
-
 import style from './Config.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';
 import * as actions from '../../store/actions/index';
-import { render } from 'react-dom';
 
 class Config extends Component {
     constructor(props) {
@@ -26,6 +24,7 @@ class Config extends Component {
     }
 
     componentDidMount() {
+        this.props.authCheckState()
         this.props.fetchInitState();
     }
 
@@ -40,7 +39,6 @@ class Config extends Component {
         let selectedNavTxt = { color: 'white' }
         let selectedNavAlt = { color: 'white' }
 
-        let selectedNavStyleList = { color: 'blue', pointerEvents: 'show' }
         let colorSelector = null;
         let setHoverState = {
             event: {
@@ -92,8 +90,15 @@ class Config extends Component {
             }
         }
 
+        
+        let authRedirect = null
+        if(!(this.props.isAuthenticated)) {
+            authRedirect = <Redirect to="/admin-login" />
+        }
+
         return (
             <div className={style.Config}>
+            { authRedirect }
             <h1>HOME BUTTON</h1>
 
             <h1>COLOR PALLETTE SELECTION</h1>
@@ -134,7 +139,7 @@ class Config extends Component {
                     primary={this.props.colors.secondary} 
                     secondary={this.props.colors.primary} />
 
-                    <div style={{zIndex: '1', width: '1px', height: '400px', backgroundColor: this.props.colors.primary, position: 'relative', left: '-28px', bottom: '-175px'}}></div>
+                    <div style={{zIndex: '1', width: '1px', height: '400px', backgroundColor: this.props.colors.primary, position: 'relative', left: '-28px', bottom: '-155px'}}></div>
                     
                     <h5>MASK</h5>
                     <Layout mask={{ WebkitClipPath: 'inset(0% 0% 0% 50%)', clipPath: 'inset(0% 0% 0% 50%)',backgroundColor: this.props.altColors.altColor, pointerEvents: 'none', transform: 'scale(.5)'}}
@@ -157,9 +162,11 @@ class Config extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        colors: { ...state.colors },
-        altColors: { ...state.altColors },
-        hover: state.hover
+        colors: { ...state.reducer.colors },
+        altColors: { ...state.reducer.altColors },
+        hover: state.reducer.hover,
+        token: state.auth.token,
+        isAuthenticated: state.auth.token !== null
     }
 }
 
@@ -168,7 +175,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchInitState: () => dispatch(actions.fetchInitState()),
         setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection)),
         navMouseOver: (event, maskSize) => dispatch({type: actionTypes.NAV_MOUSEOVER_HANDLER, payload: { event: event, maskSize: maskSize }}),
-        navMouseOut: (event) => dispatch({type: actionTypes.NAV_MOUSEOUT_HANDLER, payload: event})
+        navMouseOut: (event) => dispatch({type: actionTypes.NAV_MOUSEOUT_HANDLER, payload: event}),
+        authCheckState: () => dispatch(actions.authCheckState())
     }
 }
 

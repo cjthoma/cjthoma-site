@@ -111,10 +111,10 @@ const StackItem = (props) => {
     return (
         <Fade bottom>
         <div className={style.StackItem}>
-            <div className={style.DateItemContainer}>
+            {/* <div className={style.DateItemContainer}>
                 <h6>DATE</h6>
                 <h1>{props.date}</h1>
-            </div>
+            </div> */}
             <div>
                 <h6>STACK</h6>
                 <div className={style.StackItemContainer}>{stackItems}</div>
@@ -127,9 +127,9 @@ const StackItem = (props) => {
 const mapStateToProps = (state) => {
     return {
         hover: state.hover,
-        stackClickItem: state.stackClickItem,
-        textDefocus: state.colors.textDefocus,
-        textColor: state.colors.textColor
+        stackClickItem: state.reducer.stackClickItem,
+        textDefocus: state.reducer.colors.textDefocus,
+        textColor: state.reducer.colors.textColor
     }
 }
 const mapDispatchToProps = (dispatch) => {

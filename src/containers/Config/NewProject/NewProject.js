@@ -21,7 +21,7 @@ class NewProJect extends Component {
         let inputType = event.parentNode.firstChild.textContent;
         let stackValue = []
         if (inputType.includes('STACK')) {
-            let reg = new RegExp(/\, /);
+            let reg = new RegExp(/, /); // was /\, /
             inputType = 'STACK';
             stackValue = event.value.split(reg);
         }
@@ -57,8 +57,8 @@ class NewProJect extends Component {
         // checks if new project's inputs are valid before sending
         if(!(this.state.title) ||  !(this.state.description) || this.state.stack === 0 || this.state.imgs.length === 0){
             let e = null;
-            if(this.state.imgs.length == 0) e = 'atleast 1 image';
-            if(this.state.stack == 0)       e = 'a technology stack';
+            if(this.state.imgs.length === 0) e = 'atleast 1 image';
+            if(this.state.stack === 0)       e = 'a technology stack';
             if(!(this.state.description))   e = 'a description';
             if(!(this.state.title))         e = 'a title';
             this.setState({
@@ -85,9 +85,9 @@ class NewProJect extends Component {
                     imgs: [...this.state.imgs]
                 }
 
-                alert('Project Added!' +'\n' 
+                alert('Project Added! \n' 
                 +'[' +this.state.title +']')
-                this.props.addNewProject({...oldProjects , ...newProject});
+                this.props.addNewProject({...oldProjects , ...newProject}, this.props.token);
                 console.log(test);
 
             })
@@ -139,7 +139,7 @@ class NewProJect extends Component {
                             onChange={((event) => {
                                 let file = event.target.files[0];
 
-                                const uploadTask = storage.ref(`project_imgs/${file.name}`).put(file);
+                                const uploadTask = storage.ref(`project_imgs/${file.name}?auth=` +this.props.token).put(file);
                                 uploadTask.on('state_changed', 
                                 (snapshot) => {
                                     // progress function
@@ -158,7 +158,7 @@ class NewProJect extends Component {
                                         })
                                     })
                                 })
-                                alert('Image Added to Prject' +'\n' 
+                                alert('Image Added to Prject! \n' 
                                 +'[' +file.name +']')
                             })}></input>
                             <label className={style.Label}  style={{backgroundColor: this.props.colors.textColor}} for="upload">Upload File...</label>
@@ -196,19 +196,20 @@ class NewProJect extends Component {
 
 const mapStateTothisProps = (state) => {
     return {
-        colors: state.colors,
-        altColors: { ...state.altColors }
+        colors: state.reducer.colors,
+        altColors: { ...state.reducer.altColors },
+        token: state.auth.token
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        configColor: (hexValue, colorType, previousColors) => dispatch(actions.configColor(hexValue, colorType, previousColors)),
-        navMouseOver: (event, maskSize) => dispatch({type: actionTypes.NAV_MOUSEOVER_HANDLER, payload: { event: event, maskSize: maskSize }}),
-        setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection)),
-        fetchInitState: () => dispatch(actions.fetchInitState()),
-        addImageToDB: (file) => dispatch(actions.addImageToDB(file)),
-        addNewProject: (project) => dispatch(actions.addNewProject(project))
+        // configColor: (hexValue, colorType, previousColors) => dispatch(actions.configColor(hexValue, colorType, previousColors)),
+        //navMouseOver: (event, maskSize) => dispatch({type: actionTypes.NAV_MOUSEOVER_HANDLER, payload: { event: event, maskSize: maskSize }}),
+        // setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection)),
+        // fetchInitState: () => dispatch(actions.fetchInitState()),
+        addImageToDB: (file, token) => dispatch(actions.addImageToDB(file, token)),
+        addNewProject: (project, token) => dispatch(actions.addNewProject(project, token))
     }
 }
 

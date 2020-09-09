@@ -34,12 +34,14 @@ const Page = (props) => {
             page = <About
                         primary={props.secondary}
                         secondary={props.primary} />
+            if(window.innerWidth > 425) pageStyles = { backgroundColor: props.altColor, overflow: 'hidden' }
             break;
 
         case 'CONTACT':
             page = <Contact 
                         primary={props.secondary}
                         secondary={props.primary} />
+            if(window.innerWidth > 425) pageStyles = { backgroundColor: props.altColor, overflow: 'hidden' }
             break;
         
         default:
@@ -62,8 +64,8 @@ const Page = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        pageType: state.navFocusItem,
-        scrollPos: state.scrollPos,
+        pageType: state.reducer.navFocusItem,
+        scrollPos: state.reducer.scrollPos,
     }
 }
 const mapDispatchToProps = (dispatch) => {

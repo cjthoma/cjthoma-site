@@ -20,10 +20,10 @@ export const setProjects = (state) => {
     }
 }  
 
-export const addNewProject = (project) => {
+export const addNewProject = (project, token) => {
     console.log(project);
     return dispatch => {
-        axios.put('https://cjthoma-aedf4.firebaseio.com/projects.json',
+        axios.put('https://cjthoma-aedf4.firebaseio.com/projects.json?auth=' +token,
             { ...project })
         .then(response => {
             // console.log(response)

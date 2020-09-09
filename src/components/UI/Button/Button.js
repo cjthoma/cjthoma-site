@@ -78,12 +78,12 @@ class Button extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        primary: state.colors.primary,
-        secondary: state.colors.secondary,
-        textHighlight: state.colors.textHighlight,
-        textDefocus: state.colors.textDefocus,
-        hover: state.hover,
-        buttonHover: state.buttonHover
+        primary: state.reducer.colors.primary,
+        secondary: state.reducer.colors.secondary,
+        textHighlight: state.reducer.colors.textHighlight,
+        textDefocus: state.reducer.colors.textDefocus,
+        hover: state.reducer.hover,
+        buttonHover: state.reducer.buttonHover
     }
 }
 const mapDispatchToProps = (dispatch) => {

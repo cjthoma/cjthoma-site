@@ -16,7 +16,7 @@ const Layout = (props) => {
 
     // checks if layer should recieve mask layer or default layer styles
     if(props.mask) {
-        styleList = { ...props.mask }
+        styleList = props.navFocusItem ? { ...props.mask, overflowX: 'hidden' } : { ...props.mask, overflow: 'hidden' }
     } else if(window.innerWidth > 425) {
         styleList = { backgroundColor: props.altColor, overflow: 'hidden' };
     } else {
@@ -26,6 +26,7 @@ const Layout = (props) => {
     if(props.navFocusItem) { // Page Render if a NavBar item is clicked
         loadPage = (
             <Page 
+                style={{overflow: 'hidden'}}
                 mask={props.mask}
                 primary={props.secondary}
                 secondary={props.primary}
@@ -52,7 +53,7 @@ const Layout = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        navFocusItem: state.navFocusItem
+        navFocusItem: state.reducer.navFocusItem
     }
 }
 const mapDispatchToProps = (dispatch) => {

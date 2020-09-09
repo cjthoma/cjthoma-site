@@ -68,8 +68,8 @@ class Footer extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        colors: state.colors,
-        hover: state.hover
+        colors: state.reducer.colors,
+        hover: state.reducer.hover
     }
 }
 

@@ -1,8 +1,5 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
-import * as corsModule from 'cors';
-
-const cors = corsModule({origin: true})
 
 export const fetchInitState = () => {
     return dispatch => {

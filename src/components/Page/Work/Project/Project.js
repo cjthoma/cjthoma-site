@@ -72,8 +72,8 @@ class Project extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        stackClickItem: state.stackClickItem,
-        textColor: state.colors.textColor
+        stackClickItem: state.reducer.stackClickItem,
+        textColor: state.reducer.colors.textColor
     }
 }
 const mapDispatchToProps = (dispatch) => {

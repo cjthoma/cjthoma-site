@@ -101,8 +101,8 @@ class NavItem extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        hover: state.hover,
-        configPage: state.configPage,
+        hover: state.reducer.hover,
+        configPage: state.reducer.configPage,
     }
 }
 const mapDispatchToProps = (dispatch) => {

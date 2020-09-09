@@ -64,7 +64,7 @@ class ColorSelector extends Component {
 
                         if(this.state.input) {
                                 setTimeout(() => {
-                                    alert('Color Updated!' +'\n' 
+                                    alert('Color Updated! \n' 
                                     +'[' +this.props.colors[colorType] +'] => [' +[this.state.input] +']')
                                     this.props.fetchInitState()
                                     
@@ -76,7 +76,7 @@ class ColorSelector extends Component {
                                     }, 2000)
                                 }, 100)
 
-                            return this.props.configColor(this.state.input, this.props.title, previosColors)
+                            return this.props.configColor(this.state.input, this.props.title, previosColors, this.props.token)
                         } else {
                             alert('Invalid or null type, plase try again.');
                             return;
@@ -92,14 +92,15 @@ class ColorSelector extends Component {
 
 const mapStateTothisProps = (state) => {
     return {
-        colors: state.colors,
-        altColors: { ...state.altColors }
+        colors: state.reducer.colors,
+        altColors: { ...state.reducer.altColors },
+        token: state.auth.token,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        configColor: (hexValue, colorType, previousColors) => dispatch(actions.configColor(hexValue, colorType, previousColors)),
+        configColor: (hexValue, colorType, previousColors, token) => dispatch(actions.configColor(hexValue, colorType, previousColors, token)),
         navMouseOver: (event, maskSize) => dispatch({type: actionTypes.NAV_MOUSEOVER_HANDLER, payload: { event: event, maskSize: maskSize }}),
         setHover: (hoverSelection) => dispatch(actions.setHover(hoverSelection)),
         fetchInitState: () => dispatch(actions.fetchInitState()),

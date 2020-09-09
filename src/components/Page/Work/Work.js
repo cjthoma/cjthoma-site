@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import Project from './Project/Project';
 import style from './Work.module.css';
-import * as actionTypes from '../../../store/actions/actionTypes';
 
 const Work = (props) => {
     let projects = [];
@@ -44,7 +42,7 @@ const Work = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        projects: state.projects
+        projects: state.reducer.projects
     }
 }
 

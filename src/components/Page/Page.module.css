@@ -3,6 +3,7 @@
     flex-direction: row;
     width: 100%;
     transition: background-color 2s ease-in-out;
+    
 }
 
 .Page nav {

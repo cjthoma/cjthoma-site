@@ -10,3 +10,7 @@ export const SET_STATE = 'SET_STATE';
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const SET_HOVER = 'SET_HOVER';
 
+export const AUTH_START = 'AUTH_START';
+export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_LOGOUT = 'AUTH_LOGOUT';

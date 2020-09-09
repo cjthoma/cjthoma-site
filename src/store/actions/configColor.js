@@ -18,7 +18,7 @@ const hoverTest = (hoverSelection) => {
     }
 }
 
-export const configColor = (hexValue, colorType, previosColors) => {
+export const configColor = (hexValue, colorType, previosColors, token) => {
     let updatedColors = null;
 
     switch(colorType) {
@@ -26,7 +26,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
             updatedColors = { ...previosColors, primary: hexValue }
             console.log(colorType);
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -38,7 +38,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'secondary': {
             updatedColors = { ...previosColors, secondary: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -51,7 +51,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'altColor': {
             updatedColors = { ...previosColors, altColor: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -65,7 +65,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'textColor': {
             updatedColors = { ...previosColors, textColor: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -78,7 +78,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'textHighlight': {
             updatedColors = { ...previosColors, textHighlight: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -91,7 +91,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'textDefocus': {
             updatedColors = { ...previosColors, textDefocus: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/default.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -104,7 +104,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'alt-primary': {
             updatedColors = { ...previosColors, primary: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/alt.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/alt.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -117,7 +117,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'alt-secondary': {
             updatedColors = { ...previosColors, secondary: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/alt.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/alt.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)
@@ -130,7 +130,7 @@ export const configColor = (hexValue, colorType, previosColors) => {
         case 'alt-altColor': {
             updatedColors = { ...previosColors, altColor: hexValue }
             return dispatch => {
-                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/alt.json',
+                axios.put('https://cjthoma-aedf4.firebaseio.com/colors/alt.json?auth=' + token,
                     { ...updatedColors })
                 .then(response => {
                     // console.log(response)

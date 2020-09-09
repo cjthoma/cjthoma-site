@@ -100,9 +100,9 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        mouseX: state.mousePosX,
-        mouseY: state.mousePosY,
-        navHover: state.hover
+        mouseX: state.reducer.mousePosX,
+        mouseY: state.reducer.mousePosY,
+        navHover: state.reducer.hover
     }
 }
 const mapDispatchToProps = (dispatch) => {

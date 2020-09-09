@@ -1,4 +1,4 @@
-import * as actionTypes from './actions/actionTypes';
+import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     mousePosX: null,
@@ -90,6 +90,7 @@ const reducer = (state = initialState, action) => {
         }
 
         case actionTypes.NAV_CLICK_HANDLER: {
+            console.log('click')
             let updatedState = { 
                 ...state, 
                 colors: { ...state.colors }, 
@@ -123,8 +124,6 @@ const reducer = (state = initialState, action) => {
             let updatedState = { 
                 ...state, colors: { ...state.colors }, mask: { ...state.mask }
             }
-
-            let test = null;
 
             if(action.payload.event.className && action.payload.event.className.includes("Button")) {
                 updatedState = { 
@@ -190,8 +189,8 @@ const reducer = (state = initialState, action) => {
             const isFirefox = typeof InstallTrigger !== 'undefined';  
 
             // default firefox
-            let y = 100;
-            let x = 0;
+            let y = 120;
+            let x = 20;
 
             // chrome
             if(isChrome) {

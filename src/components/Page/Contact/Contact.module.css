@@ -36,7 +36,7 @@
     flex-direction: column;
     align-items: center;
     text-align: left;
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 .LinkContainer {
@@ -46,12 +46,12 @@
     flex-direction: row;
     text-decoration: none;
     padding: 10px 10px;
-    width: 350px;
-    left: 75px;
+    width: 250px;
 }
 
 .LinkContainer div {
-    font-size: 40px;
+    padding: 3px 0px;
+    font-size: 30px;
     text-align: left;
     font-weight: 600;
     text-decoration: none;
@@ -65,17 +65,17 @@
     position: relative;
     width: 20px;
     height: 20px;
-    top: 5px;
+    top: 0px;
     left: 5px;
-    background-image: url('../../../assets/icons/arrow-svgrepo-com.svg');
+    background-image: url('../../../assets/icons/diagonal-arrow-right-up-outline-svgrepo-com.svg');
     background-repeat: no-repeat;
-    transform: scaleX(-1) scaleY(-1);
+    transform: scale(1.1);
 }
 
 .Contact p {
     position: relative;
     font-size: 15px;
-    padding-top: 50px;
+    padding-top: 25px;
     -webkit-text-stroke: 0px transparent;
     width: 350px;
     text-align: left;
@@ -103,8 +103,22 @@
         padding: 10px 0;
     }
 
+    .LinkContainer div {
+        font-size: 25px;
+    }
+
+    .Arrow {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        top: -2px;
+        left: 0px;
+        transform: scale(1);
+    }
+
     .Contact p {
-        padding-top: 50px;
+        font-size: 12px;
+        padding-top: 25px;
     }
 }
 
@@ -124,6 +138,11 @@
     .Contact h1:nth-of-type(3) {
         right: 99px;
     }
+
+
+    .LinkContainer div {
+        padding: 0px;
+    }
 }
 
 @media only screen and (max-width: 425px) {
@@ -138,19 +157,19 @@
         left: 0px;
         bottom: 10px;
         padding: 10px;
+        line-height: 30px;
     }
     
     .Contact h1:nth-of-type(3) {
         right: 60px;
         bottom: 25px;
-        padding: 10px;
+        padding: 5px;
     }
-
 
     .Contact p {
         position: relative;
         font-size: 12px;
-        padding-top: 50px;
+        padding-top: 25px;
         -webkit-text-stroke: 0px transparent;
         width: 250px;
         text-align: left;

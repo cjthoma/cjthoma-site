@@ -4,25 +4,42 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
+import Auth from './containers/Auth/Auth';
 import Login from './containers/Login/Login';
 import Config from './containers/Config/Config';
-import reducer from './store/reducer';
+import reducer from './store/reducers/reducer';
+import authReducer from './store/reducers/auth';
 
 
-const store = createStore(reducer, applyMiddleware(thunk));
 
+const rootReducer = combineReducers({
+  auth: authReducer,
+  reducer: reducer
+})
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+let routes = {
+
+}
+
+if(store.getState().auth.token) {
+  
+}
 
 const app = (
   <Provider store={store}>
     <BrowserRouter>
-        <Route path={'/admin-login'} component={ Login }/>
+    <Switch>
+        <Route path={'/admin-login'} component={ Auth }/>
         <Route path={'/config-page'} component={ Config }/>
-        <Route path={'/'} exact component={ App }/>
+        <Route path={'/'} component={ App }/>
+      </Switch>
     </BrowserRouter>
   </Provider>
 )
@@ -34,7 +51,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
