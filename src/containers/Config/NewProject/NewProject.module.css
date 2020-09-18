@@ -42,7 +42,6 @@
     width: 90%;
     height: 35px;
     border: hidden;
-    border: 1 solid #474748;
     transition: background-color 2s ease;
 }
 

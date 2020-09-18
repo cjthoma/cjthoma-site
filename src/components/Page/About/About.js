@@ -21,7 +21,7 @@ const about = (props) => {
             
             <Fade bottom>
                 <p style={paragraphStyle}>
-                    Hello, I am <span style={spanHighlightStyle}>Christian Thomas</span>, a freelance digital desginer of 3 years
+                    Hello, I am <span style={spanHighlightStyle}>Christian Thomas</span>, a freelance digital designer of 3 years
                     who enjoys taking on new challenges and is always looking for ways to
                     improve. I value <span style={spanHighlightStyle}>critical thinking</span>, <span style={spanHighlightStyle}>creativity</span>, and <span style={spanHighlightStyle}>attention to detail</span>. <br></br> <br></br> <br></br>
                     

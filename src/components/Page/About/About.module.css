@@ -8,9 +8,11 @@
 
 .About h1 {
     position: relative;
+    cursor: pointer;
     font-size: 80px;
     text-align: left;
     margin: 3px auto;
+    padding-top: 3px;
     line-height: .8;
     transition: -webkit-text-stroke 1s ease-in-out,
                 color 1s ease-in-out;
@@ -129,6 +131,10 @@
 }
 
 @media only screen and (max-width: 425px) {
+
+    .About {
+        overflow-x: hidden;
+    }
 
     .About h1 {
         position: relative;

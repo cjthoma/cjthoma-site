@@ -49,10 +49,10 @@ export const auth = (email, password, isSignUp) => {
             returnSecureToken: true
         };
 
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC2sko3pCGWr8LarbmBaiFbyXalZ064lSg';
-        if(!isSignUp) {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC2sko3pCGWr8LarbmBaiFbyXalZ064lSg'
-        }
+        // let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC2sko3pCGWr8LarbmBaiFbyXalZ064lSg';
+        // if(!isSignUp) {
+            let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC2sko3pCGWr8LarbmBaiFbyXalZ064lSg'
+        // }
         axios.post(url, authData)
         .then((response) => {
             const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 10000);

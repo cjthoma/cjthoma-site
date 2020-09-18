@@ -10,13 +10,12 @@ import * as actions from './store/actions/index';
 class App extends Component {
 
   componentDidMount() {
+    this.props.fetchInitState();
     this.props.fetchProjects();
   }
 
   render() {
-    this.props.fetchInitState();
     let loadPage = null;
-
     // Serves page without mask for mobile version (page < 400px)
     if(window.innerWidth > 425) {
       loadPage = (

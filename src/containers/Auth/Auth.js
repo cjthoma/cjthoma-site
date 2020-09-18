@@ -101,6 +101,7 @@ class Auth extends Component {
     }
 
     render () {
+        this.props.fetchInitState()
         const formElementsArray = [];
         for(let key in this.state.controls) {
             formElementsArray.push({
@@ -137,14 +138,16 @@ class Auth extends Component {
         }
 
         return (
-            <div className={style.Auth}>
-                { authRedirect }
-                { errorMessage }
-                <form onSubmit={(event) => this.submitHandler(event)}>
-                    { form }
-                <Button >Submit</Button>
-                </form>
-                <Button clicked={this.switchAuthModeHandler}>{this.state.isSignUp ? 'SIGN IN' : 'SIGN UP'}</Button>
+            <div className={style.Auth} style={{backgroundColor: this.props.colors.altColor}}>
+                <div className={style.AuthWrapper}>
+                    { authRedirect }
+                    { errorMessage }
+                    <form onSubmit={(event) => this.submitHandler(event)}>
+                        { form }
+                    <Button >SIGN IN</Button>
+                    </form>
+                    {/* <Button clicked={this.switchAuthModeHandler}>{this.state.isSignUp ? 'SIGN IN' : 'SIGN UP'}</Button> */}
+                </div>
             </div>
         )
     }
@@ -152,15 +155,17 @@ class Auth extends Component {
 
 const mapStateToProps = state => {
     return {
+        colors: state.reducer.colors,
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null
     }
 }
 
-const mapDispatchToProps = disptach => {
+const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password, isSignUp) => disptach(actions.auth(email, password, isSignUp))
+        onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
+        fetchInitState: () => dispatch(actions.fetchInitState()),
     }
 }
 

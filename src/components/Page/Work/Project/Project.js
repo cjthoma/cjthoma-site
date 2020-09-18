@@ -8,9 +8,6 @@ import style from './Project.module.css';
 import * as actionTypes from '../../../../store/actions/actionTypes';
 
 class Project extends Component {
-    componentDidMount() {
-        
-    }
 
     render () {
         let stackArr = this.props.stack;

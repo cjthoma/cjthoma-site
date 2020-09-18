@@ -12,9 +12,7 @@ const Page = (props) => {
     let page = null;
     let pageScroll = null;
     let classList = null;
-    let pageStyles = {
-        backgroundColor: props.altColor
-    }
+    let pageStyles = { backgroundColor: props.altColor }
 
     if(!(props.mask) && window.innerWidth > 425){
         pageScroll = { transform: "translateY("+-((props.scrollPos))+"px)" }

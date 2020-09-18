@@ -11,6 +11,7 @@
     font-size: 80px;
     text-align: left;
     margin: 3px auto;
+    padding-top: 3px;
     line-height: .8;
     right: 55px;
     cursor: pointer;
@@ -146,6 +147,10 @@
 }
 
 @media only screen and (max-width: 425px) {
+
+    .Contact {
+        overflow-x: hidden;
+    }
 
     .Contact h1 {
         position: relative;

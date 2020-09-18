@@ -139,7 +139,7 @@ class NewProJect extends Component {
                             onChange={((event) => {
                                 let file = event.target.files[0];
 
-                                const uploadTask = storage.ref(`project_imgs/${file.name}?auth=` +this.props.token).put(file);
+                                const uploadTask = storage.ref(`project_imgs/${file.name}`).put(file);
                                 uploadTask.on('state_changed', 
                                 (snapshot) => {
                                     // progress function

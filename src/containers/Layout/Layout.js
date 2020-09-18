@@ -26,7 +26,6 @@ const Layout = (props) => {
     if(props.navFocusItem) { // Page Render if a NavBar item is clicked
         loadPage = (
             <Page 
-                style={{overflow: 'hidden'}}
                 mask={props.mask}
                 primary={props.secondary}
                 secondary={props.primary}
