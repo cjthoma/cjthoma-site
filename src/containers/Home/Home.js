@@ -6,11 +6,15 @@ import Layout from '../../components/Layout/Layout';
 import style from './Home.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';
 import * as actions from '../../store/actions/index';
+import Sun from './Sun/init'
+
+
+
 
 class Home extends Component {
 
     componentDidMount() {
-        console.log(this.props)
+        
     }
 
     render() {
@@ -31,19 +35,21 @@ class Home extends Component {
             </div>
         );
         } else {
-        home = (
-            <div className={style.Home} onMouseMove={(event) => this.props.mouseMove(event)} onScroll={(event) => this.props.onPageScroll(event)}>
-            <Layout 
-                primary={this.props.colors.secondary} 
-                secondary={this.props.colors.primary}
-                altColor={this.props.colors.altColor} />
-            </div>
-        );
-
+            home = (
+                <div className={style.Home} onMouseMove={(event) => this.props.mouseMove(event)} onScroll={(event) => this.props.onPageScroll(event)}>
+                <Layout 
+                    primary={this.props.colors.secondary} 
+                    secondary={this.props.colors.primary}
+                    altColor={this.props.colors.altColor} />
+                </div>
+            );
         }
+        
+        // You can now get a ref directly to the DOM button:
         return (
         <Aux>
-            { home }
+            {/* { home } */}
+            <Sun/>
         </Aux>
         );
     };
