@@ -1,9 +1,12 @@
 .Contact {
+    position: absolute;
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 100%;
-    transition: color 1s ease-in-out;
+    height: 100%;
+    transition: color 1s ease-in-out,
+                clip-path .05s ease;
 }
 
 .Contact h1 {

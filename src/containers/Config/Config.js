@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Layout from '../../containers/Layout/Layout';
+import Layout from '../../components/Layout/Layout';
 
 import ColorSelector from './ColorSelector/ColorSelector';
 import NewProject from './NewProject/NewProject';

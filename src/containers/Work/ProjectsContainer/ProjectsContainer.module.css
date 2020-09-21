@@ -1,0 +1,14 @@
+.ProjectsContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    align-items: left;
+    justify-content: center;
+    transition: color 1s ease-in-out,
+                clip-path .05s ease;
+    /** may want this 
+    align-items: center;
+    **/
+}

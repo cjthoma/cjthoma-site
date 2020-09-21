@@ -2,20 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// redux
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 
-import './index.css';
-import App from './App';
-import Auth from './containers/Auth/Auth';
-import Login from './containers/Login/Login';
-import Config from './containers/Config/Config';
+// reducers
 import reducer from './store/reducers/reducer';
 import authReducer from './store/reducers/auth';
 
-
+import './index.css';
+import App from './App';
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -24,25 +21,12 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
-let routes = {
-
-}
-
-if(store.getState().auth.token) {
-  
-}
-
 const app = (
   <Provider store={store}>
-    <BrowserRouter>
-    <Switch>
-        <Route path={'/admin-login'} component={ Auth }/>
-        <Route path={'/config-page'} component={ Config }/>
-        <Route path={'/'} component={ App }/>
-      </Switch>
-    </BrowserRouter>
+    <App />
   </Provider>
 )
+
 
 ReactDOM.render(
   <React.StrictMode>

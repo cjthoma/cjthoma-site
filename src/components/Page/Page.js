@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Work from './Work/Work';
-import About from './About/About';
-import Contact from './Contact/Contact';
+import Work from '../../containers/Work/Work';
+import About from '../../containers/About/About';
+import Contact from '../../containers/Contact/Contact';
 import Button from '../UI/Button/Button';
 import style from './Page.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';

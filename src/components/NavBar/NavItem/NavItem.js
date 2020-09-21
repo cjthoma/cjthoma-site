@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Aux from '../../../hoc/Aux';
 import anime from 'animejs';
@@ -35,23 +36,28 @@ class NavItem extends Component {
 
     render () {
         let item = null;
+        let linkDesination = new String(this.props.title);
         let navHoverStyleList = {
+            color: this.props.secondary,
             transform: 'scale(1.1)',
             letterSpacing: '-3px',
             transition: 'color 1s ease, opacity 1s ease, transform 1.5s ease, letter-spacing 1s ease-in-out'
         }
 
         let indexHoverStyleList = {
+            color: this.props.secondary,
             transform: "translateX(15px)",
             transition: 'color 1s ease, opacity 1s ease, transform 1s ease'
         }
 
         let navNormalStyleList = {
+            color: this.props.secondary,
             letterSpacing: '3px',
             transition: 'color 1s ease, opacity 1s ease, letter-spacing 1s ease-in-out'
         }
 
         let navDefocusStyleList = {
+            color: this.props.secondary,
             letterSpacing: '3px',
             color: 'rgba(250, 174, 123, 0.2)', 
         }
@@ -59,33 +65,42 @@ class NavItem extends Component {
     if(this.props.hover === this.props.title){ // If this.props.hover current nav item is hovered, hover style applied
         item = (
                 <div ref={this.navItemRef} className={style.NavItem} style={{color: this.props.secondary}}>
-                    <div
+                    <Link
+                        to={`/${linkDesination.toLowerCase()}`}
                         style={navHoverStyleList}
-                        onClick={(event) => this.props.navClick(event.target.parentNode)}
+                        className={style.NavTitle}
+                        // onClick={(event) => this.props.navClick(event.target.parentNode)}
                         onMouseOver={(event) => this.props.navMouseOver(event, '100px')}
-                        onMouseOut={(event) => this.props.navMouseOut(event, '100px')}>{this.props.title}</div>
+                        onMouseOut={(event) => this.props.navMouseOut(event, '100px')}>{this.props.title} 
+                    </Link>
                     <h6 style={indexHoverStyleList}>{this.props.navNum}</h6>
                 </div>
         )
     } else if(this.props.hover) { // Nav Item is not actively being hovered over during a mouse over event fade opacity
         item = (
                     <div ref={this.navItemRef} className={style.NavItem} style={{color: this.props.secondary}}>
-                    <div 
+                    <Link 
+                        to={`/${linkDesination.toLowerCase()}`}
                         style={navDefocusStyleList} 
-                        onClick={(event) => this.props.navClick(event.target.parentNode)}
+                        className={style.NavTitle}
+                        // onClick={(event) => this.props.navClick(event.target.parentNode)}
                         onMouseOver={(event) => this.props.navMouseOver(event , '100px')}
-                        onMouseOut={(event) => this.props.navMouseOut(event)}>{this.props.title}</div>
+                        onMouseOut={(event) => this.props.navMouseOut(event)}>{this.props.title}
+                    </Link>
                     <h6 style={{color: 'rgba(250, 174, 123, 0.2)'}}>{this.props.navNum}</h6>
                 </div>
         );
     } else { // else nav item is displayed normally
         item = (
                 <div ref={this.navItemRef} className={style.NavItem} style={{color: this.props.secondary}}>
-                    <div 
+                    <Link 
+                        to={`/${linkDesination.toLowerCase()}`}
                         style={navNormalStyleList}
-                        onClick={(event) => this.props.navClick(event.target.parentNode)}
+                        className={style.NavTitle}
+                        // onClick={(event) => this.props.navClick(event.target.parentNode)}
                         onMouseOver={(event) => this.props.navMouseOver(event.target.parentNode, '100px')}
-                        onMouseOut={(event) => this.props.navMouseOut(event.target.parentNode)}>{this.props.title}</div>
+                        onMouseOut={(event) => this.props.navMouseOut(event.target.parentNode)}>{this.props.title}
+                    </Link>
                     <h6>{this.props.navNum}</h6>
                 </div>
             )

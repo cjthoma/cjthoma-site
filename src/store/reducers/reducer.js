@@ -116,7 +116,7 @@ const navClickHandler = (state, action) => {
     return updatedState;
 }
 
-const navMouseOver = (state, action) => {
+const mouseOver = (state, action) => {
     let updatedState = { 
         ...state, colors: { ...state.colors }, mask: { ...state.mask }
     }
@@ -143,7 +143,7 @@ const navMouseOver = (state, action) => {
     return updatedState;
 }
 
-const navMouseOut = (state, action) => {
+const mouseOut = (state, action) => {
     let updatedState = { 
         ...state, 
         colors: { ...state.colors }, 
@@ -280,8 +280,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_HOVER: return setHover(state, action);
         case actionTypes.FETCH_PROJECTS: return fetchProjects(state, action);
         case actionTypes.NAV_CLICK_HANDLER: return navClickHandler(state, action);
-        case actionTypes.NAV_MOUSEOVER_HANDLER: return navMouseOver(state, action)
-        case actionTypes.NAV_MOUSEOUT_HANDLER: return navMouseOut(state, action)
+        case actionTypes.NAV_MOUSEOVER_HANDLER: return mouseOver(state, action)
+        case actionTypes.NAV_MOUSEOUT_HANDLER: return mouseOut(state, action)
         case actionTypes.MOUSE_MOVE: return mouseMove(state, action)
         case actionTypes.BUTTON_CLICK_HANDLER: return buttonClick(state, action)
         case actionTypes.STACK_CLICK_HANDLER: return stackClick(state, action)

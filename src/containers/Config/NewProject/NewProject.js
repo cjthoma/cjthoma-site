@@ -88,8 +88,6 @@ class NewProJect extends Component {
                 alert('Project Added! \n' 
                 +'[' +this.state.title +']')
                 this.props.addNewProject({...oldProjects , ...newProject}, this.props.token);
-                console.log(test);
-
             })
             .catch(error => {
                 console.log(error);

@@ -10,7 +10,6 @@ import style from './Layout.module.css';
 // import * as actionTypes from '../../store/actions';
 
 const Layout = (props) => {
-
     let loadPage = null;
     let styleList = null;
 
@@ -23,29 +22,13 @@ const Layout = (props) => {
         styleList = { backgroundColor: props.altColor };
     }
 
-    if(props.navFocusItem) { // Page Render if a NavBar item is clicked
-        loadPage = (
-            <Page 
-                mask={props.mask}
-                primary={props.secondary}
-                secondary={props.primary}
-                altColor={props.altColor} />
-        );
-    } else { // Default Page Render
-        loadPage = (
-            <Aux>
-                <Header secondary={props.secondary} />
-                <NavBar 
-                    primary={props.primary} 
-                    secondary={props.secondary} />
-                <Footer secondary={props.secondary} />
-            </Aux>
-        );
-    };
-
     return (
         <div className={style.Layout} style={styleList}>
-            { loadPage }
+            <Header secondary={props.secondary} />
+            <NavBar 
+                primary={props.primary} 
+                secondary={props.secondary} />
+            <Footer secondary={props.secondary} />
         </div>
     );
 };

@@ -1,0 +1,42 @@
+.ProjectContainer {
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    transition: height 1s ease-in-out;
+    overflow: hidden;
+}
+
+.ProjectContainer h1 {
+    margin: 0;
+    font-size: 75px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    -webkit-text-stroke: transparent;
+    stroke: 0;
+    transition: color 1s ease, 
+                opacity 1s ease, 
+                transform 1.5s ease, 
+                letter-spacing 1s ease-in-out;
+}
+
+.ProjectContainer h6 {
+    position: relative;
+    height: 25px;
+    top: 22px;
+    font-size: 15px;
+    font-weight: 100;
+    padding-left: 5px;
+}
+
+.Arrow {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    top: 47px;
+    padding-left: 35px;
+    background-image: url('../../../../assets/icons/diagonal-arrow-right-up-outline-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    background-position: center; 
+    transform: scale(3);
+}

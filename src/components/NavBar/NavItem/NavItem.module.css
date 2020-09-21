@@ -4,7 +4,9 @@
     padding: 0 50px;
 }
 
-.NavItem div {
+.NavTitle {
+    display: flex;
+    position: relative;
     height: inherit;
     font-size: 12em;
     font-weight: 600;
@@ -13,14 +15,9 @@
                 letter-spacing 1s ease-in-out;
     cursor: pointer;
     align-items: center;
-        /** TEST **/
-        display: flex;
-        position: relative;
-        overflow: hidden;
-}
+    text-decoration: none;
+    color: black;
 
-.NavItem div p {
-    box-sizing: border-box;
 }
 
 .NavItem h6 {
@@ -33,14 +30,14 @@
 }
 
 @media only screen and (max-width: 900px) {
-    .NavItem div {
-        height: inherit;
-        font-size: 7em;
-    }
-
     .NavItem {
         height: 125px;
         padding: 15px;
+    }
+
+    .NavTitle {
+        height: inherit;
+        font-size: 7em;
     }
 
     .NavItem h6 {
@@ -50,14 +47,15 @@
 }
 
 @media only screen and (max-width: 700px) {
-    .NavItem div {
-        font-size: 3em;
-        font-weight: 600;
-    }
 
     .NavItem {
         height: 65px;
         padding: 10px;
+    }
+
+    .NavTitle {
+        font-size: 3em;
+        font-weight: 600;
     }
 
     .NavItem h6 {
