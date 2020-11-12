@@ -1,4 +1,4 @@
-.ProjectContainer {
+.PageLink {
     margin: 5px;
     display: flex;
     flex-direction: row;
@@ -6,9 +6,10 @@
     overflow: hidden;
     cursor: pointer;
     text-decoration: none;
+    outline : none;
 }
 
-.ProjectContainer h1 {
+.PageLink h1 {
     margin: 0;
     font-size: 125px;
     font-weight: 700;
@@ -16,19 +17,17 @@
     text-transform: uppercase;
     -webkit-text-stroke: transparent;
     stroke: 0;
-    text-decoration: none;
     transition: color 1s ease, 
                 opacity 1s ease, 
                 transform 1.5s ease, 
                 letter-spacing 1s ease-in-out;
 }
 
-.ProjectContainer h6 {
+.PageLink h6 {
     position: relative;
     height: 25px;
     top: 85.5px;
     font-size: 10px;
-    font-weight: 100;
     padding-left: 5px;
 }
 
@@ -37,8 +36,8 @@
     width: 15px;
     height: 15px;
     top: 47px;
-    padding-left: 35px;
-    background-image: url('../../../../assets/icons/diagonal-arrow-right-up-outline-svgrepo-com.svg');
+    padding-left: 40px;
+    background-image: url('../../../assets/icons/diagonal-arrow-svgrepo-com.svg');
     background-repeat: no-repeat;
     background-position: center; 
     transform: scale(3);

@@ -4,22 +4,22 @@ import { Link } from 'react-router-dom';
 import style from './DesktopWorkPage.module.css';
 import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
-import ProjectContainer from './ProjectContainer/ProjectContainer';
+import PageLink from '../../../components/UI/PageLink/PageLink';
 
 class ProjectsContainer extends Component {
     render () {
-        let containerStyle = null;
+        var containerStyle = null;
         // checks if layer should recieve mask layer or default layer styles
         if(this.props.mask) {
-            containerStyle = { ...this.props.mask, backgroundColor: this.props.colors.primary, WebkitTextStroke: '1px ' +this.props.secondary, color: 'transparent', overflowX: 'hidden' };
+            containerStyle = { ...this.props.mask, backgroundColor: this.props.colors.primary };
         } else if(window.innerWidth > 425) {
-            containerStyle = { backgroundColor: this.props.colors.altColor, WebkitTextStroke: '1px ' +this.props.secondary, color: 'transparent',  };
+            containerStyle = { backgroundColor: this.props.colors.altColor };
         } else {
-            containerStyle = { backgroundColor: this.props.colors.altColor, WebkitTextStroke: '1px ' +this.props.secondary, color: 'transparent',  };
+            containerStyle = { backgroundColor: this.props.colors.altColor };
         }
 
 
-        let projects = [];
+        let pageLinks = [];
         let index = 0;
 
         for(var key in this.props.projects) {
@@ -33,9 +33,9 @@ class ProjectsContainer extends Component {
                 imgs.push(this.props.projects[key].imgs[i])
             }
     
-            projects.push (
+            pageLinks.push (
                 <Link style={{textDecoration: 'none'}} to={`/work/${this.props.projects[key].title.replace(' ','')}`}>
-                    <ProjectContainer
+                    <PageLink
                         key={this.props.projects[key].title}
                         title={this.props.projects[key].title} 
                         description={this.props.projects[key].description} 
@@ -45,22 +45,41 @@ class ProjectsContainer extends Component {
                         imgs={imgs}
                         primary={this.props.secondary}
                         secondary={this.props.primary} />
-                
                 </Link>
             );
             index++;
         }
 
         return (
-            <div style={containerStyle} className={style.ProjectsContainer}>
-                <div className={style.Wrapper}>
-                    { projects }
-                    <p className={style.Footer}>
-                        I'm constantly experimenting outside <br></br>
-                        of client work to uncover unique layouts, styles, <br></br>
-                        and interactions, and of late have been taking a lot of <br></br>
-                        inspiration from print design in particular.
-                    </p>
+            <div style={containerStyle} className={style.Wrapper}>
+                <div className={style.ProjectsContainer}>
+                <div className={style.PageLinksContainer}>
+                { pageLinks }
+                </div>
+                    
+                    <div className={style.Footer}>
+                        <div className={style.Dash} style={{backgroundColor: this.props.colors.primary}}>.</div>
+                        <p style={{color: this.props.defaultColors.primary}}>
+                            I'm constantly experimenting outside of client <br></br>
+                            work to uncover unique layouts, styles, and<br></br>
+                            interactions, and of late have been taking a lot<br></br>
+                            of inspiration from print design in particular.<br></br><br></br>
+
+                            Reach out and connect with me!
+                        </p>
+                        <Link style={{textDecoration: 'none'}} to={`/contact`}>
+                            <PageLink
+                                key={'contact'}
+                                title={'contact'} 
+                                description={null} 
+                                stack={null}
+                                date={null}
+                                index={'0'+(index+1)}
+                                imgs={null}
+                                primary={this.props.colors.secondary}
+                                secondary={this.props.colors.primary} />
+                        </Link>
+                    </div>
                 </div>
             </div>
         );

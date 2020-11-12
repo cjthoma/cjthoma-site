@@ -34,7 +34,7 @@ class NavBar extends Component {
     render () {
         let transformConfig = null;
         
-        if(this.props.mouseY > 400 && this.props.mouseY < 600 && window.innerWidth > 900){
+        if(this.props.mouseY > 400 && this.props.mouseY < 600 && window.innerWidth > 900 && window.innerWidth < 1920){
             transformConfig = { transform: "translateX("+(-(this.props.mouseX-(window.innerWidth/1.75)))+"px)"} ;
         } else if(window.innerWidth > 900) {
             transformConfig = { transform: "translateX(100px)" };

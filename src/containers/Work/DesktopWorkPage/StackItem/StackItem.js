@@ -1,21 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Fade from 'react-reveal/Fade';
 import style from './StackItem.module.css';
-import * as actionTypes from '../../../../../store/actions/actionTypes';
+import * as actionTypes from '../../../../store/actions/actionTypes';
 
 const StackItem = (props) => {
-    let stackArr = props.stack;
-    let stackItems = [];
-    let stackItemStyle = { backgroundColor: props.primary, color: 'white' };
-    let stackHoverStyle = { 
+    var stackArr = props.stack;
+    var stackItems = [];
+    var stackItemStyle = { backgroundColor: props.primary, color: props.secondary };
+    var stackHoverStyle = { 
         backgroundColor: props.primary, 
         color: 'white', 
         transform: 'translate3d(0px, 0vh, 0px) scale3d(1.155, 1.155, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg)'
     }
 
-    let stackClickedStyle = { 
+    var stackClickedStyle = { 
         backgroundColor: props.primary, 
         color: 'white', 
         transform: 'translate3d(0px, 0vh, 0px) scale3d(1.155, 1.155, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg)'
@@ -23,7 +22,7 @@ const StackItem = (props) => {
 
 
     if(props.stackClickItem) { // If a stack item is selected
-        for(let i = 0; i < stackArr.length; i++) { // Checks projects stack for selected stack item
+        for(var i = 0; i < stackArr.length; i++) { // Checks projects stack for selected stack item
             if(props.stackClickItem === stackArr[i]) {
                 stackItems.push(
                     <p 
@@ -75,7 +74,7 @@ const StackItem = (props) => {
             }
         };
     } else { // If a stack item is NOT selected
-        for(let i = 0; i < stackArr.length; i++) {
+        for(var i = 0; i < stackArr.length; i++) {
             if(props.hover === stackArr[i]){
                 stackItems.push(
                     <p 
@@ -109,18 +108,16 @@ const StackItem = (props) => {
     }
     
     return (
-        <Fade bottom>
         <div className={style.StackItem}>
             {/* <div className={style.DateItemContainer}>
                 <h6>DATE</h6>
                 <h1>{props.date}</h1>
             </div> */}
             <div>
-                <h6>STACK</h6>
+                <h6 style={{color: props.secondary}}>STACK</h6>
                 <div className={style.StackItemContainer}>{stackItems}</div>
             </div>
         </div>
-        </Fade>
     );
 };
 

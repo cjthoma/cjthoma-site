@@ -1,13 +1,10 @@
-.ProjectsContainer {
+.Wrapper {
     position: absolute;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
-    text-align: center;
-    align-items: left;
-    justify-content: center;
     padding: 100px 0px;
+    overflow-x: hidden;
     transition: color 1s ease-in-out,
                 clip-path .05s ease;
     /** may want this 
@@ -15,17 +12,50 @@
     **/
 }
 
-.Wrapper {
+.ProjectsContainer {
     position: relative;
-    left: 35%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
 
+.PageLinksContainer {
+    position: relative;
+    width: 60%;
+    padding-bottom: 300px;
+}
+
 .Footer {
-    padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 60%;
+}
+
+.Footer p {
+    font-size: 15px;
+    font-weight: 300;
+    padding: 100px 0;
     text-align: left;
+}
+
+.Dash {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background-color: #2B2D42;
+    margin: auto;
+    transition: background-color 1s ease,
+                opacity 1s ease;
+}
+
+.Footer div h1 {
+    font-size: 100px;
+}
+
+.Footer div h6 {
+    top: 62px;
 }

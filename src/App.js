@@ -17,7 +17,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Auth from './containers/Auth/Auth';
 import Work from './containers/Work/Work';
-import ProjectModule from './containers/Work/DesktopWorkPage/ProjectContainer/ProjectModule/ProjectModule';
+import ProjectModule from './containers/Work/DesktopWorkPage/ProjectModule/ProjectModule';
 import About from './containers/About/About';
 import Contact from './containers/Contact/Contact';
 import Config from './containers/Config/Config';

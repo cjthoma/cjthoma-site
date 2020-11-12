@@ -2,8 +2,8 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    width: 350px;
     font-size: 12px;
-    margin: 0;
 }
 
 .StackItemContainer {
@@ -17,8 +17,9 @@
 .StackItem div h6 {
     position: relative;
     text-align: left;
-    padding: 5px 0;
+    font-size: 10px;
     left: 8px;
+    margin: 20px 0px;
 }
 
 .StackItem div div p {

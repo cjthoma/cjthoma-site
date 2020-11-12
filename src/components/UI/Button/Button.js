@@ -14,10 +14,12 @@ class Button extends Component {
 
     componentDidMount() {
         let button = this.buttonItemRef.current.children;
+        var squares = []
+        squares.push(button[0],button[1],button[2])
 
         anime.timeline({loop: false})
         .add({
-            targets: [button],
+            targets: [squares],
             translateY: [-20, 0],
             duraion: 2000,
             delay: (el, i) => 50 * i,
@@ -28,6 +30,11 @@ class Button extends Component {
     render () {
         var buttonStyle = { border: '1px solid ' +this.props.defaultColors.primary };
         var squareStyle = { backgroundColor: this.props.defaultColors.primary };
+        var circleStyle = { 
+            backgroundColor: this.props.colors.primary,
+            width: '0px',
+            height: '0px',
+        }
         var linkTo = null;
 
         if(this.props.linkType === 'projectModule') {
@@ -37,25 +44,33 @@ class Button extends Component {
         }
         
 
-
+        // BUTTON HOVER STYLES
         if(this.props.buttonHover && this.props.hover === '') {
-            buttonStyle = { border: '1px solid ' +this.props.colors.secondary }
-            squareStyle = { backgroundColor: this.props.colors.secondary }
+            buttonStyle = { border: '1px solid ' +this.props.colors.altColor }
+            squareStyle = { backgroundColor: this.props.colors.altColor }
+            circleStyle = { 
+                backgroundColor: this.props.defaultColors.primary,
+                width: '90px',
+                height: '90px',
+            }
 
-        } else if(this.props.hover != null) {
-            buttonStyle = { border: '1px solid ' +this.props.colors.textDefocus,  opacity: '.2' }
-            squareStyle = { backgroundColor: this.props.colors.textDefocus, opacity: '.5' }
         }
+        // else if(this.props.hover != null) {
+        //     buttonStyle = { border: '1px solid ' +this.props.colors.textDefocus,  opacity: '.2' }
+        //     squareStyle = { backgroundColor: this.props.colors.textDefocus, opacity: '.5' }
+        // }
 
         let button = null;
+        var squares = []
         if(this.buttonItemRef.current && this.props.buttonHover){
             button = this.buttonItemRef.current.children;
+            squares.push(button[0],button[1],button[2])
         }
 
         if(button) {
             anime.timeline({loop: false})
             .add({
-                targets: [button],
+                targets: [squares],
                 translateY: [-20, 0],
                 duraion: 2000,
                 delay: (el, i) => 50 * i,
@@ -76,6 +91,7 @@ class Button extends Component {
                     <div className={style.square} style={squareStyle}></div>
                     <div className={style.square} style={squareStyle}></div>
                     <div className={style.square} style={squareStyle}></div>
+                    <div className={style.circle} style={circleStyle}></div>
             </Link>
         );
     };
@@ -84,10 +100,7 @@ class Button extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        primary: state.reducer.colors.primary,
-        secondary: state.reducer.colors.secondary,
-        textHighlight: state.reducer.colors.textHighlight,
-        textDefocus: state.reducer.colors.textDefocus,
+
         defaultColors: { ...state.reducer.defaultColors },
         colors: { ...state.reducer.altColors },
         hover: state.reducer.hover,

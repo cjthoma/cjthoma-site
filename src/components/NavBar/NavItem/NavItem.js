@@ -48,7 +48,7 @@ class NavItem extends Component {
 
         let indexHoverStyleList = {
             color: this.props.secondary,
-            transform: "translateX(15px)",
+            transform: 'translateX(30px)',
             transition: 'color 1s ease, opacity 1s ease, transform 1s ease'
         }
 
