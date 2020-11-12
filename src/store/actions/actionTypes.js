@@ -9,6 +9,7 @@ export const ON_SCROLL_HANDLER = "ON_SCROLL_HANDLER";
 export const SET_STATE = 'SET_STATE';
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const SET_HOVER = 'SET_HOVER';
+export const RESET_STATE = 'SET_HOVER';
 
 export const AUTH_START = 'AUTH_START';
 export const AUTH_FAIL = 'AUTH_FAIL';

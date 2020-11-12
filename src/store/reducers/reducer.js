@@ -93,22 +93,28 @@ const navClickHandler = (state, action) => {
         colors: { ...state.colors }, 
         mask: { ...state.mask }
     }
+
     if(action.payload.textContent === 'ABOUT' || action.payload.textContent === 'WORK' || action.payload.textContent === 'CONTACT') {
         
         updatedState = { 
             ...updatedState,
             colors: { ...state.altColors },
-            mask: { ...state.mask },
+            mask: {
+                WebkitClipPath: 'circle(0)',
+                clipPath: 'circle(0)',
+                backgroundColor: state.colors.primary,
+            },
             hover: null, 
             maskSize: '30px', 
-            navFocusItem: action.payload.textContent 
+            navFocusItem: action.payload.textContent
         }
         
         if(window.innerWidth < 425) {
             updatedState = {
                 ...updatedState,
                 mask: { ...state.mask },
-                colors: { ...state.altColors }
+                colors: { ...state.altColors },
+                navFocusItem: action.payload.textContent
             }
         }
         return updatedState;
@@ -156,6 +162,7 @@ const mouseOut = (state, action) => {
             mask: { ...state.mask },
             colors: { ...state.defaultColors },
             hover: null, 
+            buttonHover: false, 
             maskSize: '30px', 
         }
     } else {
@@ -178,31 +185,12 @@ const mouseMove = (state, action) => {
         mask: { ...state.mask }
     }
 
-    // checks browser to set mask element positioning
-    const isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
-    const isFirefox = typeof InstallTrigger !== 'undefined';  
-
-    // default firefox
-    let y = 120;
-    let x = 0;
-
-    // chrome
-    if(isChrome) {
-        y = 130;
-        x = 40;
-    };
-
-    // safari
-    if(!(isFirefox) && !(isChrome)) {
-        y = 65;
-    }
-
     updatedState = { 
         ...updatedState,
         colors: { ...state.colors },
         mask: {
-            WebkitClipPath: 'ellipse('+state.maskSize +' ' +state.maskSize +' at ' +(action.payload.screenX-(y+20)) +'px ' +(action.payload.screenY-y) +'px)',
-            clipPath: 'ellipse('+state.maskSize +' ' +state.maskSize +' at ' +(action.payload.screenX-(x)) +'px ' +(action.payload.screenY-y) +'px)',
+            WebkitClipPath: 'circle('+state.maskSize +' at ' +(action.payload.pageX) +'px ' +(action.payload.pageY) +'px)',
+            clipPath: 'circle('+state.maskSize +' at ' +(action.payload.pageX) +'px ' +(action.payload.pageY) +'px)',
             backgroundColor: state.colors.primary,
         },
         mousePosX: action.payload.screenX, 
@@ -216,7 +204,7 @@ const buttonClick = (state, action) => {
     let updatedState = { 
         ...state, 
         colors: { ...state.colors }, 
-        mask: { ...state.mask }
+        mask: { ...state.mask },
     }
 
     updatedState = { 
@@ -273,9 +261,34 @@ const scrollHandler = (state, action) => {
     return updatedState;
 }
 
+// RESETS PAGE BACK TO DEFAULT STATE
+const resetState = (state, action) => {
+    let updatedState = {
+        ...state,
+        colors: { ...state.colors },
+        mask: { ...state.mask },
+    }
+
+    updatedState = {
+        ...state, 
+        colors: { ...state.defaultColors },
+        mask: {
+            WebkitClipPath: 'circle(0)',
+            clipPath: 'circle(0)',
+            backgroundColor: state.colors.primary,
+        },
+        navFocusItem: null,
+        hover: null,
+        maskSize: '30px',
+    }
+
+    return updatedState;
+}
+
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.RESET_STATE: return resetState(state, action);
         case actionTypes.SET_STATE: return setState(state, action);
         case actionTypes.SET_HOVER: return setHover(state, action);
         case actionTypes.FETCH_PROJECTS: return fetchProjects(state, action);

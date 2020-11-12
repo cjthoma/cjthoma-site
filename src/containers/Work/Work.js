@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PageNav from '../../components/PageNav/PageNav';
 
-import DesktopWorkPage from './ProjectsContainer/ProjectsContainer';
+import DesktopWorkPage from './DesktopWorkPage/DesktopWorkPage';
 import MobileWorkPage from './MobileWorkPage/WorkPage';
 import style from './Work.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -27,6 +28,7 @@ const Work = (props) => {
 
     const desktopWorkPage = (
         <div className={style.Work} onMouseMove={(event) => props.mouseMove(event)}>
+            <PageNav pageType={'work'} linkType={'HomePageLink'}/>
             <DesktopWorkPage 
                 primary={props.colors.secondary} 
                 secondary={props.colors.primary}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import anime from 'animejs';
 import style from './Button.module.css';
@@ -25,18 +26,25 @@ class Button extends Component {
     }
 
     render () {
+        var buttonStyle = { border: '1px solid ' +this.props.defaultColors.primary };
+        var squareStyle = { backgroundColor: this.props.defaultColors.primary };
+        var linkTo = null;
 
-        let buttonStyle = { border: '1px solid ' +this.props.primary }
-        let squareStyle = { backgroundColor: this.props.primary }
+        if(this.props.linkType === 'projectModule') {
+            linkTo = '/work'
+        } else {
+            linkTo = '/'
+        }
+        
 
 
         if(this.props.buttonHover && this.props.hover === '') {
-            buttonStyle = { border: '1px solid ' +this.props.secondary }
-            squareStyle = { backgroundColor: this.props.secondary }
+            buttonStyle = { border: '1px solid ' +this.props.colors.secondary }
+            squareStyle = { backgroundColor: this.props.colors.secondary }
 
-        } else if(this.props.hover) {
-            buttonStyle = { border: '1px solid ' +this.props.textDefocus,  opacity: '.2'}
-            squareStyle = { backgroundColor: this.props.textDefocus, opacity: '.5' }
+        } else if(this.props.hover != null) {
+            buttonStyle = { border: '1px solid ' +this.props.colors.textDefocus,  opacity: '.2' }
+            squareStyle = { backgroundColor: this.props.colors.textDefocus, opacity: '.5' }
         }
 
         let button = null;
@@ -57,7 +65,8 @@ class Button extends Component {
 
 
         return (
-            <div 
+            <Link 
+                to={linkTo}
                 ref={this.buttonItemRef}
                 className={style.Button} 
                 style={buttonStyle}
@@ -67,10 +76,7 @@ class Button extends Component {
                     <div className={style.square} style={squareStyle}></div>
                     <div className={style.square} style={squareStyle}></div>
                     <div className={style.square} style={squareStyle}></div>
-                    {/* <div style={barStyle} className={style.bar1}></div>
-                    <div style={barStyle} className={style.bar2}></div>
-                    <div style={barStyle} className={style.bar3}></div> */}
-            </div>
+            </Link>
         );
     };
 };
@@ -82,6 +88,8 @@ const mapStateToProps = (state) => {
         secondary: state.reducer.colors.secondary,
         textHighlight: state.reducer.colors.textHighlight,
         textDefocus: state.reducer.colors.textDefocus,
+        defaultColors: { ...state.reducer.defaultColors },
+        colors: { ...state.reducer.altColors },
         hover: state.reducer.hover,
         buttonHover: state.reducer.buttonHover
     }

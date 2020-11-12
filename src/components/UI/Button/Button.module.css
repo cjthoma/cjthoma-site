@@ -8,9 +8,8 @@
     cursor: pointer;
     height: 75px;
     width: 75px;
-    left: 5%;
     border-radius: 100%;
-    margin: 40px 0;
+    margin: 50px 0;
     transition: background-color 1s ease,
                 border 1s ease,
                 opacity 1s ease;
@@ -18,9 +17,9 @@
 
 .square {
     position: relative;
-    width: 7px;
-    height: 7px;
-    margin: 0 5px;
+    width: 3px;
+    height: 3px;
+    margin: 0 1px;
     transition: background-color 1s ease,
                 opacity 1s ease;
 }

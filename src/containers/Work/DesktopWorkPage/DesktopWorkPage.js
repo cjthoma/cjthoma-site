@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import style from './ProjectsContainer.module.css';
+import style from './DesktopWorkPage.module.css';
 import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
 import ProjectContainer from './ProjectContainer/ProjectContainer';
@@ -21,35 +22,46 @@ class ProjectsContainer extends Component {
         let projects = [];
         let index = 0;
 
-        for(let key in this.props.projects) {
+        for(var key in this.props.projects) {
             let stack = [];
             let imgs = [];
-            for(let s in this.props.projects[key].stack) {
+            for(var s in this.props.projects[key].stack) {
                 stack.push(this.props.projects[key].stack[s])
             }
     
-            for(let i in this.props.projects[key].imgs) {
+            for(var i in this.props.projects[key].imgs) {
                 imgs.push(this.props.projects[key].imgs[i])
             }
     
             projects.push (
-                <ProjectContainer 
-                    key={this.props.projects[key].title}
-                    title={this.props.projects[key].title} 
-                    description={this.props.projects[key].description} 
-                    stack={stack}
-                    date={this.props.projects[key].date}
-                    index={0+''+index}
-                    imgs={imgs}
-                    primary={this.props.secondary}
-                    secondary={this.props.primary} />
+                <Link style={{textDecoration: 'none'}} to={`/work/${this.props.projects[key].title.replace(' ','')}`}>
+                    <ProjectContainer
+                        key={this.props.projects[key].title}
+                        title={this.props.projects[key].title} 
+                        description={this.props.projects[key].description} 
+                        stack={stack}
+                        date={this.props.projects[key].date}
+                        index={0+''+index}
+                        imgs={imgs}
+                        primary={this.props.secondary}
+                        secondary={this.props.primary} />
+                
+                </Link>
             );
             index++;
         }
 
         return (
             <div style={containerStyle} className={style.ProjectsContainer}>
-                { projects }
+                <div className={style.Wrapper}>
+                    { projects }
+                    <p className={style.Footer}>
+                        I'm constantly experimenting outside <br></br>
+                        of client work to uncover unique layouts, styles, <br></br>
+                        and interactions, and of late have been taking a lot of <br></br>
+                        inspiration from print design in particular.
+                    </p>
+                </div>
             </div>
         );
     };
@@ -58,6 +70,8 @@ class ProjectsContainer extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        defaultColors: { ...state.reducer.defaultColors },
+        colors: { ...state.reducer.altColors },
         projects: state.reducer.projects,
     }
 }

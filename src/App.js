@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 
 import Aux from './hoc/Aux';
@@ -16,6 +17,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Auth from './containers/Auth/Auth';
 import Work from './containers/Work/Work';
+import ProjectModule from './containers/Work/DesktopWorkPage/ProjectContainer/ProjectModule/ProjectModule';
 import About from './containers/About/About';
 import Contact from './containers/Contact/Contact';
 import Config from './containers/Config/Config';
@@ -31,6 +33,8 @@ class App extends Component {
         this.props.fetchProjects();
     }
 
+
+
   render() {
 
     const app = (
@@ -39,11 +43,12 @@ class App extends Component {
             <Route path={'/admin-login'} component={ Auth }/>
             <Route path={'/config-page'} component={ Config }/>
     
+            <Route path={'/work/:pathParam'} component={ ProjectModule }/>
             <Route path={'/work'} component={ Work }/>
             <Route path={'/about'} component={ About }/>
             <Route path={'/contact'} component={ Contact }/>
             <Route path={'/'} component={ Home }/>
-          </Switch>
+        </Switch>
         </BrowserRouter>
     )
 

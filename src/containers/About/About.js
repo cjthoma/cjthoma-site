@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PageNav from '../../components/PageNav/PageNav';
 
 import Aux from '../../hoc/Aux'
 import style from './About.module.css';
@@ -11,6 +12,7 @@ const About = (props) => {
 
     return (
         <div className={style.About} onMouseMove={(event) => props.mouseMove(event)}>
+            <PageNav pageType={'about'} linkType={'HomePageLink'} />
             <AboutPage 
                 primary={props.colors.secondary} 
                 secondary={props.colors.primary}

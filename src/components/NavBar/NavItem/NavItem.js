@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { withRouter } from "react-router";
 
 import Aux from '../../../hoc/Aux';
 import anime from 'animejs';
@@ -12,6 +13,7 @@ class NavItem extends Component {
         super(props);
         this.navItemRef = React.createRef();  
         this.configNav = React.createRef();  
+        this.test = false;
     }
 
     componentDidMount() {
@@ -69,7 +71,7 @@ class NavItem extends Component {
                         to={`/${linkDesination.toLowerCase()}`}
                         style={navHoverStyleList}
                         className={style.NavTitle}
-                        // onClick={(event) => this.props.navClick(event.target.parentNode)}
+                        onClick={(event) => {this.props.navClick(event.target.parentNode)}}
                         onMouseOver={(event) => this.props.navMouseOver(event, '100px')}
                         onMouseOut={(event) => this.props.navMouseOut(event, '100px')}>{this.props.title} 
                     </Link>
@@ -83,7 +85,7 @@ class NavItem extends Component {
                         to={`/${linkDesination.toLowerCase()}`}
                         style={navDefocusStyleList} 
                         className={style.NavTitle}
-                        // onClick={(event) => this.props.navClick(event.target.parentNode)}
+                        onClick={(event) => this.props.navClick(event.target.parentNode)}
                         onMouseOver={(event) => this.props.navMouseOver(event , '100px')}
                         onMouseOut={(event) => this.props.navMouseOut(event)}>{this.props.title}
                     </Link>
@@ -97,7 +99,7 @@ class NavItem extends Component {
                         to={`/${linkDesination.toLowerCase()}`}
                         style={navNormalStyleList}
                         className={style.NavTitle}
-                        // onClick={(event) => this.props.navClick(event.target.parentNode)}
+                        onClick={(event) => this.props.navClick(event.target.parentNode)}
                         onMouseOver={(event) => this.props.navMouseOver(event.target.parentNode, '100px')}
                         onMouseOut={(event) => this.props.navMouseOut(event.target.parentNode)}>{this.props.title}
                     </Link>
@@ -128,4 +130,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavItem);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavItem));

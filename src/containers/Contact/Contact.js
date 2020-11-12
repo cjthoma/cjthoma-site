@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ContactPage from './ContactPage/ContactPage';
+import PageNav from '../../components/PageNav/PageNav';
 import style from './Contact.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';
 import * as actions from '../../store/actions/index';
@@ -10,17 +11,18 @@ const Contact = (props) => {
 
         return (
             <div className={style.Contact} onMouseMove={(event) => props.mouseMove(event)}>
-            <ContactPage 
-                primary={props.colors.secondary} 
-                secondary={props.colors.primary}
-                defaultColors={props.defaultColors}
-                colors={props.colors} />
-            <ContactPage 
-                mask={props.mask}
-                primary={props.colors.primary} 
-                secondary={props.colors.secondary}
-                defaultColors={props.defaultColors}
-                colors={props.colors} />
+            <PageNav pageType={'contact'} linkType={'HomePageLink'} />
+                <ContactPage 
+                    primary={props.colors.secondary} 
+                    secondary={props.colors.primary}
+                    defaultColors={props.defaultColors}
+                    colors={props.colors} />
+                <ContactPage 
+                    mask={props.mask}
+                    primary={props.colors.primary} 
+                    secondary={props.colors.secondary}
+                    defaultColors={props.defaultColors}
+                    colors={props.colors} />
             </div>
         );
 };

@@ -4,16 +4,19 @@
     flex-direction: row;
     transition: height 1s ease-in-out;
     overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .ProjectContainer h1 {
     margin: 0;
-    font-size: 75px;
+    font-size: 125px;
     font-weight: 700;
     color: white;
     text-transform: uppercase;
     -webkit-text-stroke: transparent;
     stroke: 0;
+    text-decoration: none;
     transition: color 1s ease, 
                 opacity 1s ease, 
                 transform 1.5s ease, 
@@ -23,8 +26,8 @@
 .ProjectContainer h6 {
     position: relative;
     height: 25px;
-    top: 22px;
-    font-size: 15px;
+    top: 85.5px;
+    font-size: 10px;
     font-weight: 100;
     padding-left: 5px;
 }
@@ -39,4 +42,5 @@
     background-repeat: no-repeat;
     background-position: center; 
     transform: scale(3);
+    transition: opacity 1s ease;
 }
