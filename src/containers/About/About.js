@@ -22,8 +22,8 @@ const About = (props) => {
                 mask={props.mask}
                 primary={props.colors.primary} 
                 secondary={props.colors.secondary}
-                defaultColors={props.defaultColors}
-                colors={props.colors} />
+                defaultColors={props.colors}
+                colors={props.defaultColors} />
         </div>
     );
 };

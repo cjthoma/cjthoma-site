@@ -13,18 +13,18 @@ class Button extends Component {
     }
 
     componentDidMount() {
-        let button = this.buttonItemRef.current.children;
-        var squares = []
-        squares.push(button[0],button[1],button[2])
+        // let button = this.buttonItemRef.current.children;
+        // var squares = []
+        // squares.push(button[0],button[1],button[2])
 
-        anime.timeline({loop: false})
-        .add({
-            targets: [squares],
-            translateY: [-20, 0],
-            duraion: 2000,
-            delay: (el, i) => 50 * i,
-            easing: 'easeOutExpo'
-        });
+        // anime.timeline({loop: false})
+        // .add({
+        //     targets: [squares],
+        //     translateY: [-20, 0],
+        //     duraion: 2000,
+        //     delay: (el, i) => 50 * i,
+        //     easing: 'easeOutExpo'
+        // });
     }
 
     render () {
@@ -53,39 +53,39 @@ class Button extends Component {
                 width: '90px',
                 height: '90px',
             }
-
+            let button = null;
+            var squares = []
+            if(this.buttonItemRef.current && this.props.buttonHover){
+                button = this.buttonItemRef.current.children;
+                squares.push(button[0],button[1],button[2])
+            }
+    
+            if(button) {
+                anime.timeline({loop: false})
+                .add({
+                    targets: [squares],
+                    translateY: [-20, 0],
+                    duraion: 2000,
+                    delay: (el, i) => 50 * i,
+                    easing: 'easeOutExpo'
+                });
+            }
         }
         // else if(this.props.hover != null) {
         //     buttonStyle = { border: '1px solid ' +this.props.colors.textDefocus,  opacity: '.2' }
         //     squareStyle = { backgroundColor: this.props.colors.textDefocus, opacity: '.5' }
         // }
 
-        let button = null;
-        var squares = []
-        if(this.buttonItemRef.current && this.props.buttonHover){
-            button = this.buttonItemRef.current.children;
-            squares.push(button[0],button[1],button[2])
-        }
-
-        if(button) {
-            anime.timeline({loop: false})
-            .add({
-                targets: [squares],
-                translateY: [-20, 0],
-                duraion: 2000,
-                delay: (el, i) => 50 * i,
-                easing: 'easeOutExpo'
-            });
-        }
-
-
         return (
             <Link 
                 to={linkTo}
+                onClick={(event) => {
+                    window.scrollTo(0, 0)
+                    this.props.buttonClick(event)
+                }}
                 ref={this.buttonItemRef}
                 className={style.Button} 
                 style={buttonStyle}
-                onClick={(event) => this.props.buttonClick(event)}
                 onMouseOver={(event) => this.props.mouseOver(event.target, '0px')}
                 onMouseOut={(event) => this.props.mouseOut(event)} >
                     <div className={style.square} style={squareStyle}></div>

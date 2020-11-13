@@ -69,7 +69,7 @@ const ProjectModule = (props) => {
             <div className={style.StackContainer}>
                 <div className={style.DateItem}>  
                     <h5 style={textStyle2}>DATE</h5>
-                    <p style={stackItemStyle}>July 2020</p>
+                    <p style={stackItemStyle}>{project.date}</p>
                 </div>
                 <StackItem 
                     stack={project.stack}
@@ -114,7 +114,7 @@ const ProjectModule = (props) => {
                                 date={null}
                                 index={'0'+(nextIndex)}
                                 imgs={null}
-                                primary={props.colors.secondary}
+                                primary={props.defaultColors.primary}
                                 secondary={props.colors.primary} />
                         
                         </Link>

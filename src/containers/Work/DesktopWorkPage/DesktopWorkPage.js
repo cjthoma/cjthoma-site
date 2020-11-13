@@ -34,7 +34,7 @@ class ProjectsContainer extends Component {
             }
     
             pageLinks.push (
-                <Link style={{textDecoration: 'none'}} to={`/work/${this.props.projects[key].title.replace(' ','')}`}>
+                <Link style={{textDecoration: 'none'}} onClick={() => window.scrollTo(0, 0)} to={`/work/${this.props.projects[key].title.replace(' ','')}`}>
                     <PageLink
                         key={this.props.projects[key].title}
                         title={this.props.projects[key].title} 
@@ -43,7 +43,7 @@ class ProjectsContainer extends Component {
                         date={this.props.projects[key].date}
                         index={0+''+index}
                         imgs={imgs}
-                        primary={this.props.secondary}
+                        primary={this.props.defaultColors.primary}
                         secondary={this.props.primary} />
                 </Link>
             );
@@ -58,7 +58,7 @@ class ProjectsContainer extends Component {
                 </div>
                     
                     <div className={style.Footer}>
-                        <div className={style.Dash} style={{backgroundColor: this.props.colors.primary}}>.</div>
+                        <div className={style.Dash} style={{backgroundColor: this.props.colors.primary}}></div>
                         <p style={{color: this.props.defaultColors.primary}}>
                             I'm constantly experimenting outside of client <br></br>
                             work to uncover unique layouts, styles, and<br></br>
@@ -67,7 +67,7 @@ class ProjectsContainer extends Component {
 
                             Reach out and connect with me!
                         </p>
-                        <Link style={{textDecoration: 'none'}} to={`/contact`}>
+                        <Link style={{textDecoration: 'none'}} onClick={() => window.scrollTo(0, 0)} to={`/contact`}>
                             <PageLink
                                 key={'contact'}
                                 title={'contact'} 
@@ -76,7 +76,7 @@ class ProjectsContainer extends Component {
                                 date={null}
                                 index={'0'+(index+1)}
                                 imgs={null}
-                                primary={this.props.colors.secondary}
+                                primary={this.props.defaultColors.primary}
                                 secondary={this.props.colors.primary} />
                         </Link>
                     </div>

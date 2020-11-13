@@ -5,8 +5,8 @@ import style from './PageLink.module.css';
 import * as actionTypes from '../../../store/actions/actionTypes';
 
 const PageLink = (props) => {
-    var HoverStyleList = { letterSpacing: '5px', color: props.colors.primary }
-    var PageLinkStyle = { letterSpacing: '-3px', color: props.defaultColors.primary };
+    var HoverStyleList = { letterSpacing: '5px', color: props.secondary }
+    var PageLinkStyle = { letterSpacing: '-3px', color: props.primary };
     // var BackgroundImg = { backgroundImage: `url(${props.imgs[0]})`}
 
     let page = null;

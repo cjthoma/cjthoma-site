@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import PageLink from '../../../components/UI/PageLink/PageLink';
 import Fade from 'react-reveal/Fade';
 import style from './ContactPage.module.css';
 import * as actionTypes from '../../../store/actions/actionTypes';
@@ -23,19 +25,19 @@ class ContactPage extends Component {
         }
     
         let hoverStyleList = {
-            color: this.props.secondary,
-            letterSpacing: '-2px',
+            color: this.props.defaultColors.primary, 
+            letterSpacing: '1px',
         }
     
         let defocusStyleList = {
             color: this.props.defaultColors.textDefocus, 
-            letterSpacing: '2px',
-            opacity: '.5'
+            letterSpacing: '-1px',
+            opacity: .5
         }
     
         let defaultStyleList = {
-            color: this.props.secondary, 
-            letterSpacing: '2px'
+            color: this.props.defaultColors.primary, 
+            letterSpacing: '-1px',
         }
     
         let linkedInStyle = defaultStyleList;
@@ -81,56 +83,45 @@ class ContactPage extends Component {
 
         return (
             <div style={contactStyle} className={style.Contact}>
-                <Fade bottom>
                 <h1 onMouseEnter={(event) => this.props.mouseOver(event.target, '100px')} onMouseOut={(event) => this.props.mouseOut(event)}>REACH OUT &</h1>
-                <h1 onMouseEnter={(event) => this.props.mouseOver(event.target, '100px')} onMouseOut={(event) => this.props.mouseOut(event)} style={alth1Style}>GET IN CONTACT<br></br>WITH ME</h1>
+                <h1 onMouseEnter={(event) => this.props.mouseOver(event.target, '100px')} onMouseOut={(event) => this.props.mouseOut(event)} style={alth1Style}>GET IN TOUCH</h1>
                 <div className={style.LinksWrapper}>
-    
-                    <a 
-                        className={style.LinkContainer}
-                        style={emailStyle}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '0px')} 
+                    <a className={style.LinkContainer}
+                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
                         onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={"mailto:cjthoma79@gmail.com?"}>
+                        href={'mailto:cjthoma79@gmail.com?'}>
                         <div style={emailStyle}>EMAIL</div>
-                        <div style={{color: this.props.defaultColors.primary}} className={style.Arrow}></div>
+                        <div className={style.Arrow}></div>
                     </a>
-    
-                    <a 
-                        className={style.LinkContainer}
-                        style={linkedInStyle}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '0px')} 
+
+                    <a className={style.LinkContainer}
+                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
                         onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={"https://www.linkedin.com/in/christian-thomas-74023b121/"}>
+                        href={'https://www.linkedin.com/in/christian-thomas-74023b121/'}>
                         <div style={linkedInStyle}>LINKEDIN</div>
-                        <div style={{color: this.props.defaultColors.primary}} className={style.Arrow}></div>
+                        <div className={style.Arrow}></div>
                     </a>
-    
-                    <a 
-                        className={style.LinkContainer}
-                        style={gitStyle}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '0px')} 
+
+                    <a className={style.LinkContainer}
+                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
                         onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={"https://github.com/cjthoma"}>
+                        href={'https://github.com/cjthoma'}>
                         <div style={gitStyle}>GITHUB</div>
-                        <div style={{color: this.props.defaultColors.primary}} className={style.Arrow}></div>
+                        <div className={style.Arrow}></div>
                     </a>
-    
-                    <a 
-                        className={style.LinkContainer}
-                        style={resumeStyle}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '0px')} 
+
+                    <a className={style.LinkContainer}
+                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
                         onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={"https://firebasestorage.googleapis.com/v0/b/cjthoma-aedf4.appspot.com/o/project_imgs%2FChristian%20Thomas.pdf?alt=media&token=97358f88-0a69-4020-b984-2fc34d533a04"}>
+                        href={'https://firebasestorage.googleapis.com/v0/b/cjthoma-aedf4.appspot.com/o/project_imgs%2FChristian%20Thomas.pdf?alt=media&token=97358f88-0a69-4020-b984-2fc34d533a04'}>
                         <div style={resumeStyle}>RESUME</div>
-                        <div style={{color: this.props.defaultColors.primary}} className={style.Arrow}></div>
+                        <div className={style.Arrow}></div>
                     </a>
-                    
                     <p style={{color: this.props.secondary}}>Reach out to me at <span style={spanHighlightStyle}>cjthoma79@gmail.com</span> if you feel 
                         I would be the right fit for your project. I'll get back 
-                        to you <span style={spanHighlightStyle}>as soon as possible</span>.</p>
+                        to you <span style={spanHighlightStyle}>as soon as possible</span>.
+                    </p>
                 </div>
-                </Fade>
             </div>
         );
     }
