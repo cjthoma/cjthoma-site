@@ -4,7 +4,6 @@
     display: flex;
     flex-direction: column;
     width: 175px;
-    transition: background-color 2s ease-in-out;
 }
 
 .PageNav nav {
@@ -35,85 +34,78 @@
     transform: rotate(-90deg);
     transition: color 1s ease-in-out;
 }
-/* 
-@media only screen and (max-width: 950px) {
-    .Page {
-        flex-direction: column;
+
+@media only screen and (max-width: 1300px) { /* FIRST BREAK */
+
+}
+
+@media only screen and (max-width: 1100px) {
+
+}
+
+@media only screen and (max-width: 865px) {
+    .PageNav {
+        height: 50px;
+        z-index: 1;
         width: 100%;
-    }
-
-    .Page nav {
-        display: flex;
-        flex-direction: row;
+        justify-content: center;
         align-items: center;
-        width: 100vw;
-        height: 100px;
-        padding: 20px 20px 25px 20px;
-        box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.3);
-        z-index: 100;
-    }
-
-    .Page nav h1 {
-        transform: rotate(0deg);
-        top: 0px;
-        left: 15%;
-        padding: 0 10%;
     }
     
-    .Page nav p {
-        transform: rotate(0deg);
-        font-size: 12px;
-        top: 0px;
-        left: 25%;
-    }
-
-    .Content {
-        margin: 0px;
-    }
-}
-
-@media only screen and (max-width: 700px) {
-
-    .Page nav {
-        height: 100px;
-        padding: 10px 10px 15px 10px;
-    }
-
-    .Page nav h1 {
-        font-size: 15px;
-        left: 20%;
-        padding: 0 10px;
-    }
-
-    .Page nav p {
+    .PageNav nav {
+        flex-direction: row;
         font-size: 10px;
-        left: 45%;
+        width: 100%;
+        height: 100vh;
+        margin: 0px 50px;
     }
+    
+    .PageNav nav h1 {
+        top: 20px;
+        transform: rotate(0deg);
+    }
+    
+    .PageNav nav p {
+        top: 20px;
+        transform: rotate(0deg);
+        padding-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
 
 }
 
-@media only screen and (max-width: 425px) {
+/* CSS TRANSITION GROUP */
 
-    .Page {
-        overflow: visibles;
-    }
+.appear {
+    transform: translateX(-100vw);
+}
 
-    .Page nav {
-        height: 70px;
-        padding: 10px 10px 15px 10px;
-    }
+.appearActive {
+    animation-name: delay-slide-in;
+    animation-delay: .5s;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+}
 
-    .Page nav h1 {
-        font-size: 12px;
-        top: 0px;
-        left: 17%;
-        padding: 0 10px;
-    }
+@keyframes delay-slide-in {
+    0%   {transform: translateX(-100vw);}
+    100% {transform: translateX(0vw);}
+}
 
-    .Page nav p {
-        font-size: 6px;
-        top: 0px;
-        left: 30%;
-    }
+.appearMobile {
+    transform: translateY(-100vh);
+}
 
-} */
+.appearActiveMobile {
+    animation-name: delay-slide-in-mobile;
+    animation-delay: .5s;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+}
+
+@keyframes delay-slide-in-mobile {
+    0%   {transform: translateY(-100vw);}
+    100% {transform: translateX(0vw);}
+}

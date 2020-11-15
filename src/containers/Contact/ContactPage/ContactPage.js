@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { CSSTransitionGroup } from 'react-transition-group';
 
-import PageLink from '../../../components/UI/PageLink/PageLink';
-import Fade from 'react-reveal/Fade';
 import style from './ContactPage.module.css';
 import * as actionTypes from '../../../store/actions/actionTypes';
 import * as actions from '../../../store/actions/index';
@@ -82,46 +80,73 @@ class ContactPage extends Component {
         }
 
         return (
-            <div style={contactStyle} className={style.Contact}>
-                <h1 onMouseEnter={(event) => this.props.mouseOver(event.target, '100px')} onMouseOut={(event) => this.props.mouseOut(event)}>REACH OUT &</h1>
-                <h1 onMouseEnter={(event) => this.props.mouseOver(event.target, '100px')} onMouseOut={(event) => this.props.mouseOut(event)} style={alth1Style}>GET IN TOUCH</h1>
-                <div className={style.LinksWrapper}>
-                    <a className={style.LinkContainer}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
-                        onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={'mailto:cjthoma79@gmail.com?'}>
-                        <div style={emailStyle}>EMAIL</div>
-                        <div className={style.Arrow}></div>
-                    </a>
+                <div style={contactStyle} className={style.Contact}>
+                <CSSTransitionGroup
+                transitionName={{
+                    appear: style.titleAppear,
+                    appearActive: style.titleAppearActive,
+                }}
+                transitionAppear={true}
+                transitionAppearTimeout={1000}
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={300}>
 
-                    <a className={style.LinkContainer}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
-                        onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={'https://www.linkedin.com/in/christian-thomas-74023b121/'}>
-                        <div style={linkedInStyle}>LINKEDIN</div>
-                        <div className={style.Arrow}></div>
-                    </a>
+                    <div>
+                        <h1 onMouseEnter={(event) => this.props.mouseOver(event.target, '100px')} onMouseOut={(event) => this.props.mouseOut(event)}>REACH OUT &</h1>
+                        <h1 onMouseEnter={(event) => this.props.mouseOver(event.target, '100px')} onMouseOut={(event) => this.props.mouseOut(event)} style={alth1Style}>GET IN TOUCH</h1>
+                    </div>
+                
+                </CSSTransitionGroup>
 
-                    <a className={style.LinkContainer}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
-                        onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={'https://github.com/cjthoma'}>
-                        <div style={gitStyle}>GITHUB</div>
-                        <div className={style.Arrow}></div>
-                    </a>
+                <CSSTransitionGroup
+                transitionName={{
+                    appear: style.infoAppear,
+                    appearActive: style.infoAppearActive,
+                }}
+                transitionAppear={true}
+                transitionAppearTimeout={2000}
+                transitionEnterTimeout={1000}
+                transitionLeaveTimeout={300}>
 
-                    <a className={style.LinkContainer}
-                        onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
-                        onMouseOut={(event) => this.props.mouseOut(event)}
-                        href={'https://firebasestorage.googleapis.com/v0/b/cjthoma-aedf4.appspot.com/o/project_imgs%2FChristian%20Thomas.pdf?alt=media&token=97358f88-0a69-4020-b984-2fc34d533a04'}>
-                        <div style={resumeStyle}>RESUME</div>
-                        <div className={style.Arrow}></div>
-                    </a>
-                    <p style={{color: this.props.secondary}}>Reach out to me at <span style={spanHighlightStyle}>cjthoma79@gmail.com</span> if you feel 
-                        I would be the right fit for your project. I'll get back 
-                        to you <span style={spanHighlightStyle}>as soon as possible</span>.
-                    </p>
-                </div>
+                    <div className={style.LinksWrapper}>
+                        <a className={style.LinkContainer}
+                            onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
+                            onMouseOut={(event) => this.props.mouseOut(event)}
+                            href={'mailto:cjthoma79@gmail.com?'}>
+                            <div style={emailStyle}>EMAIL</div>
+                            <div className={style.Arrow}></div>
+                        </a>
+
+                        <a className={style.LinkContainer}
+                            onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
+                            onMouseOut={(event) => this.props.mouseOut(event)}
+                            href={'https://www.linkedin.com/in/christian-thomas-74023b121/'}>
+                            <div style={linkedInStyle}>LINKEDIN</div>
+                            <div className={style.Arrow}></div>
+                        </a>
+
+                        <a className={style.LinkContainer}
+                            onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
+                            onMouseOut={(event) => this.props.mouseOut(event)}
+                            href={'https://github.com/cjthoma'}>
+                            <div style={gitStyle}>GITHUB</div>
+                            <div className={style.Arrow}></div>
+                        </a>
+
+                        <a className={style.LinkContainer}
+                            onMouseEnter={(event) => this.props.mouseOver(event.target, '50px')} 
+                            onMouseOut={(event) => this.props.mouseOut(event)}
+                            href={'https://firebasestorage.googleapis.com/v0/b/cjthoma-aedf4.appspot.com/o/project_imgs%2FChristian%20Thomas.pdf?alt=media&token=97358f88-0a69-4020-b984-2fc34d533a04'}>
+                            <div style={resumeStyle}>RESUME</div>
+                            <div className={style.Arrow}></div>
+                        </a>
+                        <p style={{color: this.props.secondary}}>Reach out to me at <span style={spanHighlightStyle}>cjthoma79@gmail.com</span> if you feel 
+                            I would be the right fit for your project. I'll get back 
+                            to you <span style={spanHighlightStyle}>as soon as possible</span>.
+                        </p>
+                    </div>
+                
+                </CSSTransitionGroup>
             </div>
         );
     }

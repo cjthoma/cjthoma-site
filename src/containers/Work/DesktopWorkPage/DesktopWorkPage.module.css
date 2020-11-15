@@ -7,9 +7,6 @@
     overflow-x: hidden;
     transition: color 1s ease-in-out,
                 clip-path .05s ease;
-    /** may want this 
-    align-items: center;
-    **/
 }
 
 .ProjectsContainer {
@@ -24,6 +21,9 @@
 
 .PageLinksContainer {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
     width: 60%;
     padding-bottom: 300px;
 }
@@ -31,7 +31,7 @@
 .Footer {
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: flex-start;
     width: 60%;
 }
 
@@ -52,10 +52,147 @@
                 opacity 1s ease;
 }
 
+.Footer div {
+    left: 0;
+    margin: 0;
+}
+
 .Footer div h1 {
+    position: relative;
     font-size: 100px;
 }
 
 .Footer div h6 {
+    position: relative;
     top: 62px;
 }
+
+.Footer div div {
+    top: 32px;
+    transform: scale(2)
+}
+
+@media only screen and (max-width: 1300px) {
+    .PageLinksContainer {
+        padding-top: 50px;
+        padding-bottom: 150px;
+    }
+
+    .Footer p {
+        padding: 100px 0;
+    }
+
+    .Footer div h1 {
+        font-size: 60px;
+    }
+    
+    .Footer div h6 {
+        top: 25px;
+    }
+
+    .Footer div div {
+        top: 15px;
+        transform: scale(1)
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .Footer div h1 {
+        font-size: 50px;
+    }
+    
+    .Footer div h6 {
+        top: 22px;
+    }
+
+    .Footer div div {
+        top: 12px;
+        transform: scale(1)
+    }
+}
+
+@media only screen and (max-width: 865px) {
+    .PageLinksContainer {
+        padding-top: 25px;
+        padding-bottom: 75px;
+        width: 500px;
+    }
+
+    .Footer {
+        width: 65%;
+    }
+
+    .Footer p {
+        font-size: 12px;
+        padding: 50px 0;
+    }
+
+    .Footer div h1 {
+        font-size: 40px;
+    }
+    
+    .Footer div h6 {
+        top: 19px;
+    }
+
+    .Footer div div {
+        top: 12px;
+        transform: scale(1)
+    }
+}
+
+@media only screen and (max-width: 575px) {
+
+}
+
+/* CSS TRANSITION GROUP */
+
+.appear {
+    opacity: 0;
+    transform: translateX(-100vw);
+
+}
+
+.appearActive {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 1.5s ease,
+                transform 1s ease;
+}
+
+.enter {
+    opacity: 0.01;
+    font-size: 0px;
+}
+
+.enter.enterActive {
+    opacity: 1;
+    font-size: 125px;
+    transition: opacity 1000ms ease,
+                font-size 1000ms ease;
+}
+
+.example-leave {
+    opacity: 1;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+/*
+@media only screen and (max-width: 992px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 575px) {
+
+}
+
+
+*/

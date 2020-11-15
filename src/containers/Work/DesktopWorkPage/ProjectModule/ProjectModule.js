@@ -1,22 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { CSSTransitionGroup } from 'react-transition-group';
+import Fade from 'react-reveal/Fade';
 
 import PageLink from '../../../../components/UI/PageLink/PageLink';
 import PageNav from '../../../../components/PageNav/PageNav';
 import StackItem from '../StackItem/StackItem';
+import Spinner from '../../../../components/UI/Spinner/Spinner';
 
 import style from './ProjectModule.module.css';
 import * as actionTypes from '../../../../store/actions/actionTypes';
-import * as actions from '../../../../store/actions/';
+// import * as actions from '../../../../store/actions/';
 
 const ProjectModule = (props) => {
-    // console.log(props.projects)
     const pageID = props.match.params.pathParam.replace(/([A-Z])/g, ' $1').trim();
     var textStyle1 = { color: props.defaultColors.primary };
     var textStyle2 = { color: props.colors.secondary };
-    var stackItemStyle = { backgroundColor: props.defaultColors.primary, color: props.colors.secondary };
+    var dateItemStyle = { backgroundColor: props.defaultColors.primary, color: 'white' };
     var project = null;
     var nextProject = null;
     var page = null;
@@ -43,11 +44,11 @@ const ProjectModule = (props) => {
     }
 
     index = 0;
-    for(var key in props.projects) {
+    for(key in props.projects) {
         if(index === currentIndex+1) {
             nextProject = props.projects[key];
             break;
-        } else if(max-1 == currentIndex) { // catches overflow, if current index is last property of object i.e. max length
+        } else if(max-1 === currentIndex) { // catches overflow, if current index is last property of object i.e. max length
             nextProject = props.projects[key];
             nextIndex = 0;
             break;
@@ -65,26 +66,67 @@ const ProjectModule = (props) => {
         }
         page = (
         <div className={style.ProjectModule}>
-            <h1 style={textStyle1}> { pageID.toUpperCase() } </h1>
-            <div className={style.StackContainer}>
-                <div className={style.DateItem}>  
-                    <h5 style={textStyle2}>DATE</h5>
-                    <p style={stackItemStyle}>{project.date}</p>
+            <CSSTransitionGroup
+            transitionName={{
+                enter: style.titleAppear,
+                enterActive: style.titleAppearActive,
+                appear: style.titleAppear,
+                appearActive: style.titleAppearActive,
+            }}
+            transitionAppear={true}
+            transitionAppearTimeout={1000}
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={300}>
+
+                <h1 style={textStyle1}> { project.title.toUpperCase() } </h1>
+            
+            </CSSTransitionGroup>
+
+            <CSSTransitionGroup
+            transitionName={{
+                appear: style.titleAppear,
+                appearActive: style.stackAppearActive,
+            }}
+            transitionAppear={true}
+            transitionAppearTimeout={1100}
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={300}>
+
+                <div className={style.StackContainer}>
+                    <div className={style.DateItem}>  
+                        <h5 style={textStyle2}>DATE</h5>
+                        <p style={dateItemStyle}>{project.date}</p>
+                    </div>
+                    <StackItem 
+                        stack={project.stack}
+                        date={project.date}
+                        primary={props.defaultColors.primary}
+                        secondary={props.colors.secondary} />
                 </div>
-                <StackItem 
-                    stack={project.stack}
-                    date={project.date}
-                    primary={props.defaultColors.primary}
-                    secondary={props.colors.secondary} />
-            </div>
-            <p className={style.Description} style={textStyle1}> { project.description } </p>
-            { imgs }
+
+            </CSSTransitionGroup>
+
+            <CSSTransitionGroup
+            transitionName={{
+                appear: style.descriptionApper,
+                appearActive: style.descriptionAppearActive,
+            }}
+            transitionAppear={true}
+            transitionAppearTimeout={2000}
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={300}>
+                <div className={style.ProjectModuleContainer}>
+                    <p className={style.Description} style={textStyle1}> { project.description } </p>
+                </div>
+
+                <Fade bottom opposite>{ imgs }</Fade>
+            </CSSTransitionGroup>
         </div>
         );
     } else {
         page = ( 
             <div className={style.ProjectModule}>
-                <h1>Loading</h1>
+                <Spinner />
             </div>
         );
     }
@@ -105,19 +147,15 @@ const ProjectModule = (props) => {
                     <div className={style.Dash} style={{backgroundColor: props.colors.primary}}></div>
                     <div className={style.NextProjectContainer}>
                         <h2 className={style.NextProject} style={textStyle1}>NEXT PROJECT</h2>
-                        <Link style={{textDecoration: 'none'}} onClick={() => window.scrollTo(0, 0)} to={`/work/${nextTitle.replace(' ','')}`}> 
+                        <a style={{textDecoration: 'none'}} 
+                            href={`/work/${nextTitle.replace(' ','')}`}> 
                             <PageLink
                                 key={nextTitle}
                                 title={nextTitle} 
-                                description={null} 
-                                stack={null}
-                                date={null}
                                 index={'0'+(nextIndex)}
-                                imgs={null}
                                 primary={props.defaultColors.primary}
                                 secondary={props.colors.primary} />
-                        
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -141,6 +179,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         mouseMove: (event) => dispatch({type: actionTypes.MOUSE_MOVE, payload: event}),
+        resetState: () => dispatch({type: actionTypes.RESET_STATE}),
     }
 }
 

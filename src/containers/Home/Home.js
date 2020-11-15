@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Aux from '../../hoc/Aux';
-import Section from './Section/Section';
 import Layout from '../../components/Layout/Layout';
 import style from './Home.module.css';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -22,7 +21,7 @@ class Home extends Component {
         let home = null;
         // Serves page without mask for mobile version (page < 400px)
         // switch this check to if touch events maybe?
-        if(window.innerWidth > 425) {
+        if(window.innerWidth > 500) {
             home = (
                 <div className={style.Home} onMouseMove={(event) => this.props.mouseMove(event)} onScroll={(event) => this.props.onPageScroll(event.target)}>
                 <Layout 

@@ -84,102 +84,74 @@
     transition: color 1s ease-in-out;
 }
 
-/* @media only screen and (max-width: 950px) {
+@media only screen and (max-width: 1300px) { /* FIRST BREAK */
 
-    .Contact h1 {
-        font-size: 55px;
-        right: 40px;
-    }
-
-    .Contact h1:nth-of-type(2) {
-        right: 0px;
-        bottom: 13px;
-        line-height: 50px;
-    }
-    
-    .Contact h1:nth-of-type(3) {
-        right: 108px;
-    }
-
-    .LinksWrapper {
-        padding: 10px 0;
-    }
-
-    .LinkContainer div {
-        font-size: 25px;
-    }
-
-    .Arrow {
-        position: relative;
-        width: 20px;
-        height: 20px;
-        top: -2px;
-        left: 0px;
-        transform: scale(1);
-    }
-
-    .Contact p {
-        font-size: 12px;
-        padding-top: 25px;
-    }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1100px) {
 
-    .Contact h1 {
-        right: 35px;
-        position: relative;
-        font-size: 50px;
-    }
-
-    .Contact h1:nth-of-type(2) {
-        right: 0px;
-        bottom: 12px;
-    }
-    
-    .Contact h1:nth-of-type(3) {
-        right: 99px;
-    }
-
-
-    .LinkContainer div {
-        padding: 0px;
-    }
 }
 
-@media only screen and (max-width: 425px) {
-
+@media only screen and (max-width: 865px) {
     .Contact {
-        overflow-x: hidden;
+        padding: 130px 0;
     }
+}
 
+@media only screen and (max-width: 575px) {
     .Contact h1 {
-        position: relative;
-        font-size: 30px;
-        right: 20px;
-    }
-
-    .Contact h1:nth-of-type(2) {
-        left: 0px;
-        bottom: 10px;
-        padding: 10px;
-        line-height: 30px;
+        font-size: 50px;
+        padding-top: 3px;
+        line-height: .8;
+        margin: 0;
     }
     
-    .Contact h1:nth-of-type(3) {
-        right: 60px;
-        bottom: 25px;
-        padding: 5px;
+    .Contact h1:nth-of-type(2) {
+        padding: 0 10px;
+        line-height: 1.2;
+        margin: 0;
     }
 
     .Contact p {
-        position: relative;
         font-size: 12px;
-        padding-top: 25px;
-        -webkit-text-stroke: 0px transparent;
-        width: 250px;
-        text-align: left;
-        transition: color 1s ease-in-out;
+        width: 300px;
+        left: 0px;
+        text-align: center;
     }
+}
 
-} */
+/* CSS TRANSITION GROUP */
+
+.titleAppear {
+    transform: translateY(-100vh);
+
+}
+
+.titleAppearActive {
+    opacity: 1;
+    animation-name: delay-slide-in;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+}
+
+.infoAppear {
+    opacity: 0;
+}
+
+.infoAppearActive {
+    animation-name: delay-fade-in;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes delay-slide-in {
+    0%   {transform: translateY(-100vh) rotate(-20deg) scale(.9);}
+    75%  {transform: translateY(0vh) rotate(0deg) scale(.9);}
+    100% {transform: translateY(0vh) scale(1);}
+}
+
+@keyframes delay-fade-in {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}

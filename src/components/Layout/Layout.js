@@ -1,16 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Aux from '../../hoc/Aux';
 import Header from '../../components/Header/Header';
-import Page from '../../components/Page/Page';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import style from './Layout.module.css';
 // import * as actionTypes from '../../store/actions';
 
 const Layout = (props) => {
-    let loadPage = null;
     let styleList = null;
 
     // checks if layer should recieve mask layer or default layer styles

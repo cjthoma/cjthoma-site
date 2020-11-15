@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-import style from './DesktopWorkPage.module.css';
-import Aux from '../../../hoc/Aux';
 import { connect } from 'react-redux';
+import * as actionTypes from '../../../store/actions/actionTypes';
+
 import PageLink from '../../../components/UI/PageLink/PageLink';
 
+import { CSSTransitionGroup } from 'react-transition-group';
+import style from './DesktopWorkPage.module.css';
+
+
+
+
 class ProjectsContainer extends Component {
+    componentDidMount() {
+        this.props.resetState()
+    }
+
     render () {
         var containerStyle = null;
         // checks if layer should recieve mask layer or default layer styles
@@ -50,15 +59,29 @@ class ProjectsContainer extends Component {
             index++;
         }
 
+        
+
         return (
             <div style={containerStyle} className={style.Wrapper}>
                 <div className={style.ProjectsContainer}>
-                <div className={style.PageLinksContainer}>
-                { pageLinks }
-                </div>
-                    
+                    <div className={style.PageLinksContainer}>
+                    { pageLinks }
+                    </div>
+                    <CSSTransitionGroup
+                    style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
+                    transitionName={{
+                        appear: style.appear,
+                        appearActive: style.appearActive,
+                        enter: style.enter,
+                        enterActive: style.enterActive
+                    }}
+                    transitionAppear={true}
+                    transitionAppearTimeout={2000}
+                    transitionEnterTimeout={1000}
+                    transitionLeaveTimeout={300}>
+
                     <div className={style.Footer}>
-                        <div className={style.Dash} style={{backgroundColor: this.props.colors.primary}}></div>
+                        <div className={style.Dash} style={{backgroundColor: this.props.colors.primary}}>.</div>
                         <p style={{color: this.props.defaultColors.primary}}>
                             I'm constantly experimenting outside of client <br></br>
                             work to uncover unique layouts, styles, and<br></br>
@@ -67,7 +90,7 @@ class ProjectsContainer extends Component {
 
                             Reach out and connect with me!
                         </p>
-                        <Link style={{textDecoration: 'none'}} onClick={() => window.scrollTo(0, 0)} to={`/contact`}>
+                        <a style={{textDecoration: 'none'}} onClick={() => window.scrollTo(0, 0)} href={`/contact`}>
                             <PageLink
                                 key={'contact'}
                                 title={'contact'} 
@@ -78,8 +101,9 @@ class ProjectsContainer extends Component {
                                 imgs={null}
                                 primary={this.props.defaultColors.primary}
                                 secondary={this.props.colors.primary} />
-                        </Link>
+                        </a>
                     </div>
+                    </CSSTransitionGroup>
                 </div>
             </div>
         );
@@ -97,7 +121,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        
+        resetState: () => dispatch({type: actionTypes.RESET_STATE}),
     }
 }
 

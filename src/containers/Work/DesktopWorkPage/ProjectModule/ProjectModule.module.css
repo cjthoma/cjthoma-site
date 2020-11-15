@@ -19,15 +19,17 @@
 }
 
 .ProjectModule h1 { /* TITLE */
-    font-size: 6em;
+    font-size: 100px;
     white-space: nowrap;
 }
 
 .StackContainer {
+    position: relative;
     display: flex;
     flex-direction: row;
     width: 75%;
     justify-content: space-between;
+    left: 75px;
 }
 
 .DateItem{
@@ -54,7 +56,9 @@
 }
 
 .Description { /* DESCRIPTION */
+    position: relative;
     text-align: left;
+    font-size: 14px;
     padding: 150px 0;
     width: 75%;
 }
@@ -105,3 +109,243 @@
     transition: background-color 1s ease,
                 opacity 1s ease;
 }
+
+.NextProjectContainer a div { /* FOOTER PAGE LINK */
+    margin: 0;
+    left: -5px;
+}
+
+.NextProjectContainer a div div {
+    top: 35px;
+    left: 30px;
+    transform: scale(2.5);
+}
+
+@media only screen and (max-width: 1300px) { /* FIRST BREAK */
+    .ProjectModule h1 { /* TITLE */
+        font-size: 80px;
+    }
+    
+    .StackContainer {
+        left: 100px;
+    }
+
+    .NextProjectContainer a div h1 { /* FOOTER PAGE LINK H1 */
+        font-size: 80px;
+        left: 0;
+    }
+    
+    .NextProjectContainer a div h6 {
+        top: 42px;
+    }
+
+    .NextProjectContainer a div div {
+        top: 30px;
+        left: 30px;
+        transform: scale(2)
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .ProjectModule h1 { /* TITLE */
+        font-size: 60px;
+    }
+
+    .StackContainer {
+        width: 60%;
+        left: 150px;
+    }
+    
+    .DateItem h5 {
+        text-align: left;
+        font-size: 10px;
+        margin: 20px 0px;
+    }
+    
+    .DateItem p {
+        width: 50px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .Description { /* DESCRIPTION */
+        font-size: 12px;
+        width: 85%;
+    }
+
+    .NextProjectContainer a div h1 { /* FOOTER PAGE LINK H1 */
+        font-size: 60px;
+        left: 0;
+    }
+    
+    .NextProjectContainer a div h6 {
+        top: 30px;
+    }
+
+    .NextProjectContainer a div div {
+        top: 20px;
+        left: 20px;
+        transform: scale(1.5)
+    }
+}
+
+@media only screen and (max-width: 865px) {
+    .ProjectModuleContainer { /* MODULE WRAPPER w/ Footer */
+        padding-top: 130px;
+    }
+
+    .ProjectModule { /* MODULE */
+        width: 100%;
+        padding: 0 50px;
+    }
+
+    .ProjectModule h1 { /* TITLE */
+        font-size: 70px;
+    }
+
+    .Description { /* DESCRIPTION */
+        font-size: 12px;
+        padding: 150px 50px;
+        width: 65%;
+    }
+
+    .ProjectModuleImg { /* IMAGES */
+        width: 80%;
+        padding-right: 0 50px;
+    }
+
+    .ProjectModuleImg:last-of-type {
+        padding-bottom: 150px;
+    }
+
+    .Dash {
+        width: 70%;
+    }
+
+    .Footer {
+        width: 100%;
+    }
+
+    .NextProject {
+        padding-top: 75px;
+        padding-bottom: 50px;
+    }
+
+    .NextProjectContainer a div h1 { /* FOOTER PAGE LINK H1 */
+        font-size: 70px;
+        left: 0;
+    }
+    
+    .NextProjectContainer a div h6 {
+        font-size: 9px;
+        top: 34px;
+    }
+
+    .NextProjectContainer a div div {
+
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .ProjectModule h1 { /* TITLE */
+        font-size: 45px;
+    }
+
+    .Description { /* DESCRIPTION */
+        font-size: 10px;
+        padding: 25px 0 75px 0;
+    }
+
+    .StackContainer {
+        width: 50%;
+        left: 200px;
+    }
+
+    .ProjectModuleImg:last-of-type {
+        padding-bottom: 100px;
+    }
+
+    .NextProject {
+        padding-top: 50px;
+        padding-bottom: 35px;
+    }
+
+    .NextProjectContainer a div h1 { /* FOOTER PAGE LINK H1 */
+        font-size: 45px;
+        left: 0;
+    }
+    
+    .NextProjectContainer a div h6 {
+        font-size: 8px;
+        top: 15px;
+    }
+
+    .NextProjectContainer a div div {
+        top: 12px;
+        left: 10px;
+        transform: scale(1);
+    }
+}
+
+/* CSS TRANSITION GROUP */
+
+.titleAppear {
+    transform: translateY(-100vh);
+
+}
+
+.titleAppearActive {
+    opacity: 1;
+    animation-name: delay-slide-in;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+}
+
+.stackAppear {
+    transform: translateY(-100vh);
+
+}
+
+.stackAppearActive {
+    opacity: 1;
+    animation-name: delay-slide-in;
+    animation-delay: .1s;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+}
+
+.descriptionApper {
+    opacity: 0;
+}
+
+.descriptionAppearActive {
+    animation-name: delay-fade-in;
+    animation-delay: 1s;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes delay-slide-in {
+    0%   {transform: translateY(-100vh) rotate(-20deg) scale(.9);}
+    75%  {transform: translateY(0vh) rotate(0deg) scale(.9);}
+    100% {transform: translateY(0vh) scale(1);}
+}
+
+@keyframes delay-fade-in {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.imgsEnter {
+    opacity: 0;
+}
+
+.imgsEnterActive {
+    opacity: 1;
+    transition: opacity 1000ms ease;
+}
+
+.imgsEnterDone {
+
+}
+

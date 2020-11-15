@@ -7,7 +7,7 @@ import * as actionTypes from '../../../../store/actions/actionTypes';
 const StackItem = (props) => {
     var stackArr = props.stack;
     var stackItems = [];
-    var stackItemStyle = { backgroundColor: props.primary, color: props.secondary };
+    var stackItemStyle = { backgroundColor: props.primary, color: 'white' };
     var stackHoverStyle = { 
         backgroundColor: props.primary, 
         color: 'white', 
@@ -16,7 +16,7 @@ const StackItem = (props) => {
 
     var stackClickedStyle = { 
         backgroundColor: props.primary, 
-        color: 'white', 
+        color: props.secondary, 
         transform: 'translate3d(0px, 0vh, 0px) scale3d(1.155, 1.155, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg)'
     }
 
